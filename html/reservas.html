@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas y Pedidos - Restaurante</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="main-header" id="main-header">
+        <div class="logo-container" id="logo-container">
+            <h1 class="brand-title" id="brand-title">Restaurante</h1>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="menu.html" class="nav-link">Menú</a></li>
+                <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
+                <li class="nav-item"><a href="reservas.html" class="nav-link active">Reservas y Pedidos</a></li>
+                <li class="nav-item"><a href="contactos.html" class="nav-link">Contacto</a></li>
+                <li class="nav-item"><a href="desarrolladores.html" class="nav-link">Desarrolladores</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content" id="main-content-booking">
+        <section class="booking-section" id="booking-section">
+            <h2 class="section-title" id="booking-title">Reserva de Mesas y Órdenes</h2>
+
+            <div class="booking-grid" id="booking-grid">
+                
+                <!-- Contenedor 1: Módulo de Registro / Inicio de Sesión del Usuario -->
+                <div class="user-auth-container" id="user-auth-container">
+                    <h3 class="box-title">Registro de Usuario</h3>
+                    <form class="auth-form" id="auth-form-register">
+                        <div class="form-group">
+                            <label for="user-name">Nombre completo:</label>
+                            <input type="text" id="user-name" name="userName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">Correo electrónico:</label>
+                            <input type="email" id="user-email" name="userEmail" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-phone">Teléfono:</label>
+                            <input type="tel" id="user-phone" name="userPhone" class="form-input" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-register-user">Registrarse</button>
+                    </form>
+                </div>
+
+                <!-- Contenedor 2: Módulo de Reservación Dinámica de Mesas -->
+                <div class="table-reservation-container" id="table-reservation-container">
+                    <h3 class="box-title">Reservar Mesa</h3>
+                    <form class="reservation-form" id="reservation-form">
+                        <div class="form-group">
+                            <label for="res-date">Fecha de la Reserva:</label>
+                            <input type="date" id="res-date" name="resDate" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-time">Hora:</label>
+                            <input type="time" id="res-time" name="resTime" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-guests">Número de Personas:</label>
+                            <input type="number" id="res-guests" name="resGuests" min="1" max="15" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-table-select">Selección de Mesa / Zona:</label>
+                            <select id="res-table-select" name="resTableSelect" class="form-select" required>
+                                <option value="">-- Seleccionar Mesa --</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success" id="btn-submit-reservation">Confirmar Reserva</button>
+                    </form>
+                </div>
+
+                <!-- Contenedor 3: Resumen dinámico del Pedido u Orden asociadas -->
+                <div class="order-summary-container" id="order-summary-container">
+                    <h3 class="box-title">Resumen de la Orden</h3>
+                    <div class="order-list-wrapper" id="order-list-wrapper" data-container="cart-items">
+                        <!-- JS inyectará los platillos seleccionados para el pedido dinámico -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer" id="main-footer">
+        <div class="footer-container" id="footer-container">
+            <p>&copy; Restaurante. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
