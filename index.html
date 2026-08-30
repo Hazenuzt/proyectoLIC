@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Restaurante</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- NAV BAR PRINCIPAL (Compartida en todos los documentos) -->
+    <header class="main-header" id="main-header">
+        <div class="logo-container" id="logo-container">
+            <h1 class="brand-title" id="brand-title">Restaurante</h1>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Inicio</a></li>
+                <li class="nav-item"><a href="menu.html" class="nav-link">Menú</a></li>
+                <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
+                <li class="nav-item"><a href="reservas.html" class="nav-link">Reservas y Pedidos</a></li>
+                <li class="nav-item"><a href="contactos.html" class="nav-link">Contacto</a></li>
+                <li class="nav-item"><a href="desarrolladores.html" class="nav-link">Desarrolladores</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL: INTRODUCCIÓN Y PRESENTACIÓN -->
+    <main class="main-content" id="main-content-home">
+        
+        <!-- Contenedor Hero / Presentación -->
+        <section class="hero-section" id="hero-section">
+            <div class="hero-container" id="hero-container">
+                <h2 class="hero-title" id="hero-title">Bienvenido a </h2>
+                <p class="hero-description" id="hero-description">Eslogan</p>
+                <div class="hero-actions" id="hero-actions">
+                    <a href="reservas.html" class="btn btn-primary" id="btn-hero-reserve">Reservar Mesa</a>
+                    <a href="menu.html" class="btn btn-secondary" id="btn-hero-menu">Ver Menú</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenedor para destacadas o anuncios dinámicos -->
+        <section class="highlights-section" id="highlights-section">
+            <h2 class="section-title">Especialidades de la Casa</h2>
+            <div class="highlights-container" id="highlights-container">
+                <!-- JS inyectará aquí información destacada en el futuro -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA PRINCIPAL -->
+    <footer class="main-footer" id="main-footer">
+        <div class="footer-container" id="footer-container">
+            <p>&copy; Restaurante. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
