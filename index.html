@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- NAV BAR PRINCIPAL (Compartida en todos los documentos) -->
     <header class="main-header" id="main-header">
         <div class="logo-container" id="logo-container">
-            <h1 class="brand-title" id="brand-title">Restaurante</h1>
+            <h1 class="brand-title" id="brand-title">terra</h1>
+        </div>
+        <div class="user-icon" id="user-icon">
+            <img src="img/logo.png" alt="Icono de usuario">
         </div>
         <nav class="main-nav" id="main-nav">
             <ul class="nav-list" id="nav-list">
@@ -34,7 +38,7 @@
         <section class="hero-section" id="hero-section">
             <div class="hero-container" id="hero-container">
                 <h2 class="hero-title" id="hero-title">Bienvenido a </h2>
-                <p class="hero-description" id="hero-description">Eslogan</p>
+                <p class="hero-description" id="hero-description">Sabores de la tierra</p>
                 <div class="hero-actions" id="hero-actions">
                     <a href="html/reservas.html" class="btn btn-primary" id="btn-hero-reserve">Reservar Mesa</a>
                     <a href="html/menu.html" class="btn btn-secondary" id="btn-hero-menu">Ver Menú</a>
@@ -49,7 +53,7 @@
                 <!-- JS inyectará aquí información destacada en el futuro -->
             </div>
         </section>
-
+        
     </main>
 
     <!-- PIE DE PÁGINA PRINCIPAL -->
@@ -58,6 +62,14 @@
             <p>&copy; Restaurante. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!--NavBar-->
+    <nav class="bottom-nav" id="bottom-nav">
+    <a href="index.html" class="nav-link active">Inicio</a>
+    <a href="html/menu.html" class="nav-link">Menú</a>
+    <a href="html/reservas.html" class="nav-link">Pedido</a>
+    <a href="html/contactos.html" class="nav-link">Contacto</a>
+</nav>
 
     <script src="js/main.js"></script>
 </body>
