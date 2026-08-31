@@ -5,97 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas y Pedidos - Restaurante</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/reservas.css">
     <link rel="stylesheet" href="../css/base.css">
-
+    <link rel="stylesheet" href="../css/reservas.css">
 </head>
-<body>
+<body class="booking-page">
 
-    <header class="main-header" id="main-header">
-        <div class="logo-container" id="logo-container">
-            <h1 class="brand-title" id="brand-title">Restaurante</h1>
-        </div>
-        <nav class="main-nav" id="main-nav">
-            <ul class="nav-list" id="nav-list">
-                <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link">Menú</a></li>
-                <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="reservas.html" class="nav-link active">Reservas y Pedidos</a></li>
-                <li class="nav-item"><a href="contactos.html" class="nav-link">Contacto</a></li>
-                <li class="nav-item"><a href="desarrolladores.html" class="nav-link">Desarrolladores</a></li>
-            </ul>
+    <div class="booking-layout-wrapper">
+            
+        <!-- SIDEBAR / NAVEGACIÓN LATERAL (Mismo estándar) -->
+        <aside class="sidebar-navigation" id="main-header">
+            <div class="logo-container" id="logo-container">
+                <h1 class="brand-title" id="brand-title">terra</h1>
+                <div class="user-avatar-mobile hidden-md hidden-lg">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list-sidebar">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <span class="glyphicon glyphicon-home"></span>
+                            <span class="link-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu.html" class="nav-link">
+                            <span class="glyphicon glyphicon-cutlery"></span>
+                            <span class="link-text">Menú</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reservas.html" class="nav-link active">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="link-text">Pedido</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contactos.html" class="nav-link">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            <span class="link-text">Contacto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="desarrolladores.html" class="nav-link">
+                            <span class="glyphicon glyphicon-code"></span>
+                            <span class="link-text">Coders</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="user-profile-desktop hidden-xs hidden-sm">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="user-name">Usuario</span>
+            </div>
+        </aside>
+
+        <!-- NAVEGACIÓN INFERIOR PARA MÓVILES (Mismo estándar) -->
+        <nav class="bottom-nav hidden-md hidden-lg" id="bottom-nav">
+            <a href="../index.html" class="nav-link">
+                <span class="glyphicon glyphicon-home"></span><br>Inicio
+            </a>
+            <a href="menu.html" class="nav-link">
+                <span class="glyphicon glyphicon-cutlery"></span><br>Menú
+            </a>
+            <a href="reservas.html" class="nav-link active">
+                <span class="glyphicon glyphicon-shopping-cart"></span><br>Pedido
+            </a>
+            <a href="contactos.html" class="nav-link">
+                <span class="glyphicon glyphicon-comment"></span><br>Contacto
+            </a>
         </nav>
-    </header>
 
-    <main class="main-content" id="main-content-booking">
-        <section class="booking-section" id="booking-section">
-            <h2 class="section-title" id="booking-title">Reserva de Mesas y Órdenes</h2>
+        <!-- CONTENIDO PRINCIPAL DE RESERVAS Y PEDIDOS -->
+        <main class="main-content-booking" id="main-content-booking">
+            
+            <header class="booking-banner-header">
+                <h2 class="section-title" id="booking-title">Reserva de Mesas y Ordenes</h2>
+            </header>
 
-            <div class="booking-grid" id="booking-grid">
+            <section class="booking-section" id="booking-section">
                 
-                <!-- Contenedor 1: Módulo de Registro / Inicio de Sesión del Usuario -->
-                <div class="user-auth-container" id="user-auth-container">
-                    <h3 class="box-title">Registro de Usuario</h3>
-                    <form class="auth-form" id="auth-form-register">
-                        <div class="form-group">
-                            <label for="user-name">Nombre completo:</label>
-                            <input type="text" id="user-name" name="userName" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="user-email">Correo electrónico:</label>
-                            <input type="email" id="user-email" name="userEmail" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="user-phone">Teléfono:</label>
-                            <input type="tel" id="user-phone" name="userPhone" class="form-input" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="btn-register-user">Registrarse</button>
-                    </form>
+                <!-- BLOQUE DE BIENVENIDA DE USUARIO -->
+                <div class="welcome-card">
+                    <h4 class="welcome-user">Usuario</h4>
+                    <p class="welcome-message">¡Hola Usuario! , Que gusto poder atenderte hoy</p>
                 </div>
 
-                <!-- Contenedor 2: Módulo de Reservación Dinámica de Mesas -->
-                <div class="table-reservation-container" id="table-reservation-container">
-                    <h3 class="box-title">Reservar Mesa</h3>
-                    <form class="reservation-form" id="reservation-form">
-                        <div class="form-group">
-                            <label for="res-date">Fecha de la Reserva:</label>
-                            <input type="date" id="res-date" name="resDate" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="res-time">Hora:</label>
-                            <input type="time" id="res-time" name="resTime" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="res-guests">Número de Personas:</label>
-                            <input type="number" id="res-guests" name="resGuests" min="1" max="15" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="res-table-select">Selección de Mesa / Zona:</label>
-                            <select id="res-table-select" name="resTableSelect" class="form-select" required>
-                                <option value="">-- Seleccionar Mesa --</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-success" id="btn-submit-reservation">Confirmar Reserva</button>
-                    </form>
+                <div class="booking-forms-grid">
+
+                    <!-- CARD 1: ORDENA AQUÍ -->
+                    <div class="form-card">
+                        <h3 class="card-title">Ordena Aquí</h3>
+                        <form id="order-form" class="custom-form">
+                            <div class="form-row">
+                                <label for="order-dish">Platillos:</label>
+                                <div class="input-with-btn">
+                                    <select id="order-dish" class="form-control">
+                                        <option value="">-- Seleccionar --</option>
+                                    </select>
+                                    <button type="button" class="btn-add">+</button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label for="dish-qty">Cantidad</label>
+                                <input type="number" id="dish-qty" class="form-control" min="1" value="1">
+                            </div>
+
+                            <div class="form-row">
+                                <label for="order-drink">Bebidas:</label>
+                                <div class="input-with-btn">
+                                    <select id="order-drink" class="form-control">
+                                        <option value="">-- Seleccionar --</option>
+                                    </select>
+                                    <button type="button" class="btn-add">+</button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label for="drink-qty">Cantidad</label>
+                                <input type="number" id="drink-qty" class="form-control" min="1" value="1">
+                            </div>
+
+                            <div class="form-action">
+                                <button type="submit" class="btn-custom">Confirmar Orden</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- CARD 2: RESERVA TU MESA -->
+                    <div class="form-card">
+                        <h3 class="card-title">Reserva tu Mesa</h3>
+                        <form id="reservation-form" class="custom-form">
+                            <div class="form-row">
+                                <label for="res-date">Fecha :</label>
+                                <input type="date" id="res-date" class="form-control" placeholder="DD/MM/AAAA" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="res-time">Hora:</label>
+                                <input type="time" id="res-time" class="form-control" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="res-guests">Numero de personas:</label>
+                                <input type="number" id="res-guests" class="form-control" min="1" max="15" required>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="res-zone">Seccion/Zona de mesa:</label>
+                                <select id="res-zone" class="form-control" required>
+                                    <option value="">-- Seleccionar Zona --</option>
+                                    <option value="interior">Interior</option>
+                                    <option value="terraza">Terraza</option>
+                                    <option value="vip">Zona VIP</option>
+                                </select>
+                            </div>
+
+                            <div class="form-action">
+                                <button type="submit" class="btn-custom">Confirmar Reserva</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
 
-                <!-- Contenedor 3: Resumen dinámico del Pedido u Orden asociadas -->
-                <div class="order-summary-container" id="order-summary-container">
-                    <h3 class="box-title">Resumen de la Orden</h3>
-                    <div class="order-list-wrapper" id="order-list-wrapper" data-container="cart-items">
-                        <!-- JS inyectará los platillos seleccionados para el pedido dinámico -->
+                <!-- SECCIÓN RESUMEN DE LA ORDEN -->
+                <div class="order-summary-block">
+                    <h3 class="summary-title">Resumen de la Orden</h3>
+                    
+                    <div class="summary-table-wrapper">
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody id="summary-items">
+                                <tr>
+                                    <td>Lorem</td>
+                                    <td>2</td>
+                                    <td>$00.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="summary-footer">
+                        <div class="total-box">
+                            <span>Total:</span>
+                            <span class="total-amount">$00.00</span>
+                        </div>
+                        <button type="button" class="btn-custom btn-pay">Pagar</button>
                     </div>
                 </div>
 
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <footer class="main-footer" id="main-footer">
-        <div class="footer-container" id="footer-container">
-            <p>&copy; Restaurante. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+            <footer class="main-footer" id="main-footer">
+                <div class="footer-container">
+                    <p>&copy; Restaurante. Todos los derechos reservados.</p>
+                </div>
+            </footer>
+        </main>
+
+    </div>
 
     <script src="../js/main.js"></script>
 </body>

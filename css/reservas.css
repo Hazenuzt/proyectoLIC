@@ -1,0 +1,437 @@
+/* ===================================================
+   HOJA DE ESTILOS PARA RESERVAS Y PEDIDOS
+   =================================================== */
+
+.booking-page {
+    background-color: var(--colo-fondo-general);
+    margin: 0;
+    padding: 0;
+}
+
+.booking-layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ===================================================
+   1. NAVEGACIÓN LATERAL (SIDEBAR Y BOTTOM NAV)
+   =================================================== */
+.sidebar-navigation {
+    background-color: var(--color-fondo-alt);
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+}
+
+.logo-container {
+    background-color: var(--color-secundario);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container .brand-title {
+    color: var(--color-texto);
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 3vw, 2.8rem);
+    font-weight: bold;
+    margin: 0;
+}
+
+.user-avatar-mobile .glyphicon {
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    background-color: var(--color-fondo-alt);
+    color: var(--color-texto-secundario);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.sidebar-nav {
+    display: block !important;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.nav-list-sidebar {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 15px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.nav-list-sidebar .nav-item {
+    width: 100%;
+    margin: 0;
+}
+
+.nav-list-sidebar .nav-link {
+    display: flex !important;
+    align-items: center;
+    padding: 16px 22px !important;
+    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
+    font-weight: 600;
+    color: var(--color-texto-secundario) !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.nav-list-sidebar .nav-link .glyphicon {
+    font-size: clamp(1.4rem, 1.6vw, 1.7rem);
+    margin-right: 15px;
+    color: var(--color-primario);
+}
+
+.nav-list-sidebar .nav-link.active,
+.nav-list-sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-left: 6px solid var(--color-primario) !important;
+    color: var(--color-primario) !important;
+    padding-left: 26px !important;
+}
+
+.user-profile-desktop {
+    background-color: var(--color-secundario);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-top: auto;
+}
+
+.user-profile-desktop .glyphicon {
+    font-size: clamp(1.6rem, 1.8vw, 2rem);
+    background-color: var(--color-fondo-alt);
+    padding: 8px;
+    border-radius: 50%;
+    margin-right: 14px;
+}
+
+/* ===================================================
+   2. CONTENIDO PRINCIPAL, TARJETAS Y FORMULARIOS
+   =================================================== */
+.main-content-booking {
+    flex-grow: 1;
+    background-color: var(--colo-fondo-general);
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-banner-header {
+    background-color: var(--color-primario) !important;
+    padding: 20px;
+    text-align: center;
+}
+
+.booking-banner-header .section-title {
+    color: var(--colo-fondo-general) !important;
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+    margin: 0;
+}
+
+.booking-section {
+    padding: 30px 25px;
+    flex-grow: 1;
+    max-width: 950px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* CARD DE BIENVENIDA */
+.welcome-card {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 18px 22px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.welcome-user {
+    color: var(--color-primario);
+    font-weight: bold;
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem); 
+    margin: 0 0 6px 0;
+}
+
+.welcome-message {
+    color: var(--color-texto);
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+    margin: 0;
+}
+
+/* GRID DE TARJETAS DE FORMULARIO */
+.booking-forms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.form-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.card-title {
+    color: var(--color-primario);
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 2.3vw, 2.4rem); 
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* FORMULARIOS INTERNOS */
+.custom-form .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.custom-form label {
+    font-weight: bold;
+    color: var(--color-texto);
+    font-size: clamp(1.1rem, 1.3vw, 1.3rem); /* Labels de mayor tamaño */
+    width: 40%;
+    margin: 0;
+}
+
+/* INPUTS Y SELECTS CON ALTURA AMPLIADA */
+.custom-form .form-control {
+    width: 60%;
+    height: 45px; /* Altura más cómoda de interacción */
+    border-radius: 4px;
+    border: 1px solid #d0d0d0;
+    background-color: #e2e2e2;
+    box-shadow: none;
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem); /* Texto de los campos agrandado */
+    padding: 8px 14px;
+    color: var(--color-texto);
+}
+
+/*AJUSTE DE TAMAÑO DE LAS FLECHAS DE INPUT NUMÉRICO*/
+.custom-form input[type="number"]::-webkit-inner-spin-button,
+.custom-form input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: inner-spin-button;
+    transform: scale(1.6);          
+    transform-origin: right center; 
+    cursor: pointer;
+    margin-right: 10px;             
+    opacity: 1;                    
+}
+
+/* CONTENEDOR CON BOTÓN + A MANO DERECHA */
+.input-with-btn {
+    display: flex;
+    width: 60%;
+    gap: 8px;
+    align-items: center;
+}
+
+.input-with-btn .form-control {
+    width: 100%;
+}
+
+/* BOTÓN DE AGREGAR (+) ADAPTADO A LA ALTURA COMPLETA DEL CONTENEDOR */
+.btn-add {
+    background-color: #d1d1d1;
+    border: none;
+    color: #333;
+    width: 45px;
+    height: 45px; 
+    min-width: 45px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.5rem; /* Símbolo '+' más claro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-add:hover {
+    background-color: #bebebe;
+}
+
+.btn-add:active {
+    transform: scale(0.96);
+}
+
+.form-action {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-custom {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: clamp(1.1rem, 1.3vw, 1.3rem); /* Botones principales con mayor jerarquía */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-custom:hover {
+    background-color: #6e2e15;
+    transform: translateY(-1px);
+}
+
+/* RESUMEN DE LA ORDEN */
+.order-summary-block {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--color-primario);
+}
+
+.summary-title {
+    color: var(--color-primario);
+    font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+    margin-bottom: 20px;
+}
+
+.summary-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table th {
+    text-align: left;
+    font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+    color: var(--color-texto);
+    padding-bottom: 12px;
+}
+
+.summary-table td {
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    color: var(--color-texto);
+    padding: 10px 0;
+}
+
+.summary-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.total-box {
+    font-size: clamp(1.2rem, 1.4vw, 1.45rem);
+    font-weight: bold;
+    color: var(--color-primario);
+}
+
+.btn-pay {
+    padding: 10px 35px;
+}
+
+/* ===================================================
+   3. BREAKPOINTS RESPONSIVOS
+   =================================================== */
+
+/* PANTALLAS GRANDES (Escritorio >= 768px) */
+@media (min-width: 768px) {
+    .booking-layout-wrapper {
+        flex-direction: row;
+    }
+
+    .sidebar-navigation {
+        width: 280px;
+        min-width: 280px;
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    .main-content-booking {
+        width: calc(100% - 280px);
+    }
+}
+
+/* PANTALLAS PEQUEÑAS (Móvil < 768px) */
+@media (max-width: 767px) {
+    .booking-layout-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar-navigation {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-nav {
+        display: none !important;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 65px;
+        background-color: var(--color-secundario);
+        border-top: 2px solid var(--color-primario);
+        display: flex !important;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1000;
+        padding: 4px 0;
+    }
+
+    .bottom-nav .nav-link {
+        color: var(--color-texto);
+        text-decoration: none !important;
+        text-align: center;
+        font-size: 1.1rem !important;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 12px;
+        flex: 1;
+        transition: color 0.2s ease, transform 0.1s ease;
+    }
+
+    .bottom-nav .nav-link .glyphicon {
+        font-size: 1.8rem !important;
+        margin-bottom: 3px;
+    }
+
+    .bottom-nav .nav-link.active,
+    .bottom-nav .nav-link:hover {
+        color: var(--color-primario);
+        transform: scale(1.05);
+    }
+
+    .main-content-booking {
+        padding-bottom: 75px !important;
+    }
+
+    .custom-form .form-row {
+        flex-direction: row;
+    }
+}
