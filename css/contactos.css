@@ -1,0 +1,115 @@
+/* ============================================
+   SECCIÓN DE CONTACTO
+   ============================================ */
+.contact-section{
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.contact-section .section-title{
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ============================================
+   GRID: info + formulario
+   Mobile-first: apilados en columna
+   ============================================ */
+.contact-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   CONTENEDOR DE INFORMACIÓN GENERAL
+   ============================================ */
+.contact-info-container{
+    background-color: var(--color-fondo-alt);
+    padding: var(--spacing-lg);
+    border-radius: 10px;
+}
+
+.contact-info-container h3{
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+}
+
+.info-details p{
+    margin-bottom: var(--spacing-md);
+    color: var(--color-texto);
+}
+
+.info-details strong{
+    color: var(--color-texto-secundario);
+}
+
+/* ============================================
+   CONTENEDOR DEL FORMULARIO
+   ============================================ */
+.contact-form-container{
+    background-color: #ffffff;
+    padding: var(--spacing-lg);
+    border-radius: 10px;
+    border: 1px solid var(--color-fondo-alt);
+}
+
+.contact-form-container h3{
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+}
+
+.form-group{
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+}
+
+.form-input{
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--color-secundario);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background-color: var(--colo-fondo-general);
+    color: var(--color-texto);
+}
+
+.form-input:focus{
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(140, 59, 27, 0.15);
+}
+
+textarea.form-input{
+    resize: vertical;
+    min-height: 100px;
+}
+
+#btn-send-message{
+    width: 100%;
+    padding: 0.7rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE: tablet/desktop
+   ============================================ */
+@media (min-width: 768px){
+    .contact-grid{
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    #btn-send-message{
+        width: auto;
+        padding: 0.7rem 2rem;
+    }
+}
