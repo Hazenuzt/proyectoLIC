@@ -1,0 +1,236 @@
+/* ===================================================
+   HOJA DE ESTILOS DEFINITIVA PARA LA PÁGINA MENÚ
+   =================================================== */
+
+.menu-page {
+    background-color: var(--colo-fondo-general);
+    margin: 0;
+    padding: 0;
+}
+
+/* LAYOUT PRINCIPAL CON FLEXBOX */
+.menu-layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ===================================================
+   1. ESTILOS DEL SIDEBAR
+   =================================================== */
+.sidebar-navigation {
+    background-color: var(--color-fondo-alt);
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+}
+
+.logo-container {
+    background-color: var(--color-secundario);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container .brand-title {
+    color: var(--color-texto);
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.user-avatar-mobile .glyphicon {
+    font-size: 1.8rem;
+    background-color: var(--color-fondo-alt);
+    color: var(--color-texto-secundario);
+    padding: 6px;
+    border-radius: 50%;
+}
+
+/* NAVEGACIÓN VERTICAL DEL SIDEBAR (Independiente de base.css) */
+.sidebar-nav {
+    display: block !important;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.nav-list-sidebar {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 15px 0 !important;
+    display: flex !important;
+    flex-direction: column !important; /* Fuerza verticalidad siempre */
+}
+
+.nav-list-sidebar .nav-item {
+    width: 100%;
+    margin: 0;
+}
+
+.nav-list-sidebar .nav-link {
+    display: flex !important;
+    align-items: center;
+    padding: 14px 20px !important;
+    font-size: 1.1rem;
+    color: var(--color-texto-secundario) !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease;
+}
+
+.nav-list-sidebar .nav-link .glyphicon {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    color: var(--color-primario);
+}
+
+.nav-list-sidebar .nav-link.active,
+.nav-list-sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-left: 5px solid var(--color-primario) !important;
+    color: var(--color-primario) !important;
+}
+
+.user-profile-desktop {
+    background-color: var(--color-secundario);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    margin-top: auto;
+}
+
+.user-profile-desktop .glyphicon {
+    font-size: 1.6rem;
+    background-color: var(--color-fondo-alt);
+    padding: 6px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+/* ===================================================
+   2. CONTENIDO PRINCIPAL Y TARJETAS
+   =================================================== */
+.main-content-menu {
+    flex-grow: 1;
+    background-color: var(--colo-fondo-general);
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-banner-header {
+    background-color: var(--color-primario) !important;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.menu-banner-header .section-title {
+    color: var(--colo-fondo-general) !important;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.menu-section {
+    padding: 25px 30px;
+    flex-grow: 1;
+}
+
+.category-title {
+    color: var(--color-primario);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.dish-card {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.dish-card img {
+    border-radius: 4px;
+    height: 140px;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+.dish-card .dish-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-texto);
+    margin: 6px 0 2px 0;
+}
+
+.dish-card .dish-desc {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 4px;
+}
+
+.dish-card .dish-price {
+    font-weight: bold;
+    color: var(--color-texto);
+    font-size: 0.95rem;
+    display: block;
+}
+
+/* ===================================================
+   3. BREAKPOINTS RESPONSIVOS
+   =================================================== */
+
+/* PANTALLAS GRANDES (Escritorio >= 768px) */
+@media (min-width: 768px) {
+    .menu-layout-wrapper {
+        flex-direction: row; /* Sidebar a la izquierda, Contenido a la derecha */
+    }
+
+    .sidebar-navigation {
+        width: 260px; /* Ancho fijo perfecto para el sidebar */
+        min-width: 260px;
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    .main-content-menu {
+        width: calc(100% - 260px); /* Ocupa exactamente el espacio restante */
+    }
+}
+
+/* PANTALLAS PEQUEÑAS (Móvil < 768px) */
+@media (max-width: 767px) {
+    .menu-layout-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar-navigation {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-nav {
+        display: none !important; /* Oculta navegación del sidebar en móvil */
+    }
+
+    .bottom-nav {
+        background-color: var(--color-secundario);
+        border-top: 1px solid var(--color-primario);
+    }
+
+    .bottom-nav .nav-link {
+        color: var(--color-texto);
+    }
+
+    .bottom-nav .nav-link.active,
+    .bottom-nav .nav-link:hover {
+        color: var(--color-primario);
+    }
+}

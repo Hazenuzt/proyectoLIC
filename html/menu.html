@@ -4,51 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú - Restaurante</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="styesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/base.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/menu.css">
 </head>
-<body>
+<body class="menu-page">
 
-    <header class="main-header" id="main-header">
-        <div class="logo-container" id="logo-container">
-            <h1 class="brand-title" id="brand-title">Restaurante</h1>
-        </div>
-        <nav class="main-nav" id="main-nav">
-            <ul class="nav-list" id="nav-list">
-                <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link active">Menú</a></li>
-                <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="reservas.html" class="nav-link">Reservas y Pedidos</a></li>
-                <li class="nav-item"><a href="contactos.html" class="nav-link">Contacto</a></li>
-                <li class="nav-item"><a href="desarrolladores.html" class="nav-link">Desarrolladores</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="main-content" id="main-content-menu">
-        <section class="menu-section" id="menu-section">
-            <h2 class="section-title" id="menu-title">Nuestro Menú</h2>
+    <div class="menu-layout-wrapper">
             
-            <!-- Contenedor para los botones de filtrado de categorías -->
-            <div class="menu-filter-container" id="menu-filter-container">
-                <!-- JS inyectará/gestionará las categorías dinámicamente -->
+        <!-- SIDEBAR / CABECERA -->
+        <aside class="sidebar-navigation" id="main-header">
+            <div class="logo-container" id="logo-container">
+                <h1 class="brand-title" id="brand-title">terra</h1>
+                <div class="user-avatar-mobile hidden-md hidden-lg">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
             </div>
 
-            <!-- Contenedor Grid donde JS renderizará la lista de platillos -->
-            <div class="menu-grid-container" id="menu-grid-container" data-container="dishes-list">
-                <!-- JS renderizará cada tarjeta de platillo aquí -->
+            <!-- Cambiamos la clase 'main-nav' por 'sidebar-nav' para desvincularlo totalmente del CSS base -->
+            <nav class="sidebar-nav">
+                <ul class="nav-list-sidebar">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <span class="glyphicon glyphicon-home"></span>
+                            <span class="link-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu.html" class="nav-link active">
+                            <span class="glyphicon glyphicon-cutlery"></span>
+                            <span class="link-text">Menú</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reservas.html" class="nav-link">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="link-text">Pedido</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contactos.html" class="nav-link">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            <span class="link-text">Contacto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="desarrolladores.html" class="nav-link">
+                            <span class="glyphicon glyphicon-code"></span>
+                            <span class="link-text">Coders</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="user-profile-desktop hidden-xs hidden-sm">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="user-name">Usuario</span>
             </div>
-        </section>
-    </main>
+        </aside>
 
-    <footer class="main-footer" id="main-footer">
-        <div class="footer-container" id="footer-container">
-            <p>&copy; Restaurante. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+        <!-- NAVEGACIÓN INFERIOR PARA MÓVILES -->
+        <nav class="bottom-nav hidden-md hidden-lg" id="bottom-nav">
+            <a href="../index.html" class="nav-link">
+                <span class="glyphicon glyphicon-home"></span><br>Inicio
+            </a>
+            <a href="menu.html" class="nav-link active">
+                <span class="glyphicon glyphicon-cutlery"></span><br>Menú
+            </a>
+            <a href="reservas.html" class="nav-link">
+                <span class="glyphicon glyphicon-shopping-cart"></span><br>Pedido
+            </a>
+            <a href="contactos.html" class="nav-link">
+                <span class="glyphicon glyphicon-comment"></span><br>Contacto
+            </a>
+        </nav>
 
-    <script src="js/main.js"></script>
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content-menu" id="main-content-menu">
+            
+            <header class="menu-banner-header">
+                <h2 class="section-title" id="menu-title">Nuestro Menú</h2>
+            </header>
+
+            <section class="menu-section" id="menu-section">
+                <div class="menu-grid-container" id="menu-grid-container">
+                    
+                    <!-- SECCIÓN: PLATILLOS FUERTES -->
+                    <div class="category-block">
+                        <h3 class="category-title">Platillos Fuertes</h3>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
+                                <h4 class="dish-title">Lorem Ipsum</h4>
+                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                <span class="dish-price">$00.00</span>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
+                                <h4 class="dish-title">Lorem Ipsum</h4>
+                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                <span class="dish-price">$00.00</span>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
+                                <h4 class="dish-title">Lorem Ipsum</h4>
+                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                <span class="dish-price">$00.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN: POSTRES -->
+                    <div class="category-block">
+                        <h3 class="category-title">Postres</h3>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                <img src="https://placehold.co/400x300" alt="Postre" class="img-responsive center-block">
+                                <h4 class="dish-title">Lorem Ipsum</h4>
+                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                <span class="dish-price">$00.00</span>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                <img src="https://placehold.co/400x300" alt="Postre" class="img-responsive center-block">
+                                <h4 class="dish-title">Lorem Ipsum</h4>
+                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                <span class="dish-price">$00.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <footer class="main-footer" id="main-footer">
+                <div class="footer-container">
+                    <p>&copy; Restaurante. Todos los derechos reservados.</p>
+                </div>
+            </footer>
+        </main>
+
+    </div>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>
