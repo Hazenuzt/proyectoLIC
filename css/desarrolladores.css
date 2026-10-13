@@ -1,0 +1,92 @@
+```css
+/* Sección de desarrolladores */
+.devs-section {
+    width: 100%;
+    padding: 50px 3%;
+}
+
+/* Cuadrícula de tarjetas */
+.devs-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de cada desarrollador*/
+.dev-card {
+    background-color: #ffffff;
+    padding: 10px 14px 30px;
+    text-align: center;
+    min-width: 0;
+}
+
+/* Contenedor de la imagen */
+.dev-image-container {
+    width: 100%;
+    height: 145px;
+    background-color: #d9d9d9;
+    margin-bottom: 22px;
+    overflow: hidden;
+}
+
+/* Para la imagen */
+.dev-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Para el nombre de la persona */
+.dev-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #111111;
+    margin: 0 0 14px;
+}
+
+/* Descripción de la persona */
+.dev-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #111111;
+    margin: 0;
+}
+/* Adaptaciones */
+/* tabletas */
+@media (max-width: 900px) {
+    .devs-grid-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+}
+
+/* celulares */
+@media (max-width: 480px) {
+    .devs-section {
+        padding: 30px 20px;
+    }
+
+    .devs-grid-container {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .dev-image-container {
+        height: 200px;
+    }
+
+    .dev-name {
+        font-size: 18px;
+    }
+
+    .dev-description {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+```
