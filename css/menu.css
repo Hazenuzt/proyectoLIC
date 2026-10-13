@@ -1,69 +1,53 @@
-/* ===================================================
-   HOJA DE ESTILOS DEFINITIVA PARA LA PÁGINA MENÚ
-   =================================================== */
 
 .menu-page {
     background-color: var(--colo-fondo-general);
-    margin: 0;
-    padding: 0;
+    padding-bottom: 0; /* anula el espacio reservado al nav inferior de base.css */
 }
 
-/* LAYOUT PRINCIPAL CON FLEXBOX */
+/* LAYOUT PRINCIPAL: sidebar a la izquierda en todos los tamaños */
 .menu-layout-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     min-height: 100vh;
 }
 
 /* ===================================================
-   1. ESTILOS DEL SIDEBAR CON TIPOGRAFÍA RESPONSIVA
+   1. SIDEBAR
    =================================================== */
 .sidebar-navigation {
     background-color: var(--color-fondo-alt);
     display: flex;
     flex-direction: column;
     z-index: 101;
+    width: 280px;
+    min-width: 280px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
 }
 
-.logo-container {
+.sidebar-navigation .logo-container {
     background-color: var(--color-secundario);
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-/* Título de la marca dinámico */
-.logo-container .brand-title {
-    color: var(--color-texto);
-    font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 3vw, 2.8rem);
-    font-weight: bold;
-    margin: 0;
-}
-
-.user-avatar-mobile .glyphicon {
-    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
-    background-color: var(--color-fondo-alt);
-    color: var(--color-texto-secundario);
-    padding: 8px;
-    border-radius: 50%;
-}
-
-/* NAVEGACIÓN VERTICAL DEL SIDEBAR */
 .sidebar-nav {
-    display: block !important;
+    display: block;
     width: 100%;
     flex-grow: 1;
 }
 
 .nav-list-sidebar {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 15px 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav-list-sidebar .nav-item {
@@ -71,21 +55,20 @@
     margin: 0;
 }
 
-/* Enlaces del Sidebar dinámicos */
 .nav-list-sidebar .nav-link {
-    display: flex !important;
+    display: flex;
     align-items: center;
-    padding: 16px 22px !important;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem); /* Texto más grande y fluido */
+    padding: 16px 22px;
+    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
     font-weight: 600;
-    color: var(--color-texto-secundario) !important;
-    border-bottom: none !important;
-    text-decoration: none !important;
+    color: var(--color-texto-secundario);
+    border-bottom: none;
+    text-decoration: none;
     transition: background-color 0.2s ease, padding-left 0.2s ease;
 }
 
 .nav-list-sidebar .nav-link .glyphicon {
-    font-size: clamp(1.4rem, 1.6vw, 1.7rem); /* Iconos escalables */
+    font-size: clamp(1.4rem, 1.6vw, 1.7rem);
     margin-right: 15px;
     color: var(--color-primario);
 }
@@ -93,12 +76,11 @@
 .nav-list-sidebar .nav-link.active,
 .nav-list-sidebar .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.4);
-    border-left: 6px solid var(--color-primario) !important;
-    color: var(--color-primario) !important;
-    padding-left: 26px !important;
+    border-left: 6px solid var(--color-primario);
+    color: var(--color-primario);
+    padding-left: 26px;
 }
 
-/* Bloque inferior del perfil */
 .user-profile-desktop {
     background-color: var(--color-secundario);
     padding: 18px 22px;
@@ -119,26 +101,58 @@
 }
 
 /* ===================================================
-   2. CONTENIDO PRINCIPAL, BANNER Y TARJETAS
+   2. LOGO COMO BOTÓN PARA OCULTAR / MOSTRAR EL SIDEBAR
+   =================================================== */
+ 
+/* Checkbox oculto (accesible por teclado) */
+.sidebar-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+ 
+/* Logo dentro del sidebar: al pulsarlo se oculta el sidebar */
+.brand-toggle {
+    display: block;
+    margin: 0;
+    cursor: pointer;
+}
+ 
+.brand-toggle img {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
+}
+ 
+/* Logo dentro del banner: solo aparece en móvil con el sidebar cerrado */
+.brand-toggle-open {
+    display: none;
+}
+
+/* ===================================================
+   3. CONTENIDO PRINCIPAL, BANNER Y TARJETAS
    =================================================== */
 .main-content-menu {
-    flex-grow: 1;
+    flex: 1;
+    min-width: 0;
     background-color: var(--colo-fondo-general);
     display: flex;
     flex-direction: column;
 }
 
-/* Banner "Nuestro Menú" */
 .menu-banner-header {
-    background-color: var(--color-primario) !important;
+    position: relative;
+    background-color: var(--color-primario);
     padding: 18px 20px;
     text-align: center;
 }
 
 .menu-banner-header .section-title {
-    color: var(--colo-fondo-general) !important;
+    color: var(--colo-fondo-general);
     font-family: var(--font-heading);
-    font-size: clamp(2.4rem, 3.5vw, 3.2rem); /* Banner de gran impacto */
+    font-size: clamp(2.4rem, 3.5vw, 3.2rem);
     margin: 0;
 }
 
@@ -147,7 +161,6 @@
     flex-grow: 1;
 }
 
-/* Encabezados de categorías */
 .category-title {
     color: var(--color-primario);
     font-family: var(--font-heading);
@@ -166,13 +179,12 @@
 
 .dish-card img {
     border-radius: 6px;
-    height: clamp(130px, 15vw, 180px); /* Altura de imagen escalable */
+    height: clamp(130px, 15vw, 180px);
     width: 100%;
     object-fit: cover;
     margin-bottom: 12px;
 }
 
-/* Nombre del platillo */
 .dish-card .dish-title {
     font-size: clamp(1.15rem, 1.4vw, 1.45rem);
     font-weight: bold;
@@ -180,7 +192,6 @@
     margin: 8px 0 4px 0;
 }
 
-/* Descripción del platillo */
 .dish-card .dish-desc {
     font-size: clamp(0.9rem, 1vw, 1.05rem);
     color: var(--color-texto-secundario);
@@ -188,7 +199,6 @@
     line-height: 1.4;
 }
 
-/* Precio del platillo */
 .dish-card .dish-price {
     font-weight: bold;
     color: var(--color-primario);
@@ -197,89 +207,181 @@
 }
 
 /* ===================================================
-   3. BREAKPOINTS RESPONSIVOS
+   4. PESTAÑAS (radios + labels)
    =================================================== */
-
-/* PANTALLAS GRANDES (Escritorio >= 768px) */
-@media (min-width: 768px) {
-    .menu-layout-wrapper {
-        flex-direction: row;
-    }
-
-    .sidebar-navigation {
-        width: 280px;
-        min-width: 280px;
-        min-height: 100vh;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-    }
-
-    .main-content-menu {
-        width: calc(100% - 280px);
-    }
+.tab-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* PANTALLAS PEQUEÑAS (Móvil < 768px) - SECCIÓN ACTUALIZADA */
-@media (max-width: 767px) {
-    .menu-layout-wrapper {
-        flex-direction: column;
-    }
+.menu-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
 
+.menu-tab-label {
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 1.2vw, 1.4rem);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin: 0;
+}
+
+.menu-tab-label:hover {
+    background-color: rgba(140, 59, 27, 0.1);
+}
+
+/* Todos los paneles ocultos por defecto */
+.category-block {
+    display: none;
+}
+
+/* Mostrar el panel según el radio marcado */
+#tab-fuertes:checked ~ .panel-fuertes,
+#tab-postres:checked ~ .panel-postres,
+#tab-bebidas:checked ~ .panel-bebidas {
+    display: block;
+}
+
+/* Pestaña activa */
+#tab-fuertes:checked ~ .menu-tabs .label-fuertes,
+#tab-postres:checked ~ .menu-tabs .label-postres,
+#tab-bebidas:checked ~ .menu-tabs .label-bebidas {
+    background-color: var(--color-primario);
+    color: var(--colo-fondo-general);
+}
+
+/* Foco visible con teclado */
+#tab-fuertes:focus-visible ~ .menu-tabs .label-fuertes,
+#tab-postres:focus-visible ~ .menu-tabs .label-postres,
+#tab-bebidas:focus-visible ~ .menu-tabs .label-bebidas {
+    outline: 3px solid var(--color-texto);
+    outline-offset: 2px;
+}
+
+/* ===================================================
+   5. Pantallas grandes, se usa barra superior
+   =================================================== */
+@media (min-width: 768px) {
     .sidebar-navigation {
-        width: 100%;
-        min-height: auto;
+        display: none;
     }
 
-    .sidebar-nav {
-        display: none !important;
+    .menu-layout-wrapper {
+        min-height: calc(100vh - var(--header-height));
+    }
+    
+    .header-brand img {
+    height: 48px;
+    width: auto;
+}
+}
+
+/* ===================================================
+   6. PANTALLAS PEQUEÑAS: sidebar compacto, sin barra superior
+   =================================================== */
+@media (max-width: 767px) {
+    .menu-page .main-header {
+        display: none;
     }
 
-    /* BARRA INFERIOR DE NAVEGACIÓN */
-    .bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 65px;
-        background-color: var(--color-secundario);
-        border-top: 2px solid var(--color-primario);
-        display: flex !important;
-        justify-content: space-around;
-        align-items: center;
-        z-index: 1000;
-        padding: 4px 0;
+    /* --- Sidebar compacto con animación de colapso --- */
+    .sidebar-navigation {
+        width: 110px;
+        min-width: 110px;
+        overflow-x: hidden;
+        white-space: nowrap;
+        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0s;
     }
-
-    .bottom-nav .nav-link {
-        color: var(--color-texto);
-        text-decoration: none !important;
-        text-align: center;
-        font-size: 1.1rem !important; /* Texto legible en sm */
-        font-weight: 600;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 6px 12px;
-        flex: 1;
-        transition: color 0.2s ease, transform 0.1s ease;
+ 
+    /* Checkbox marcado = sidebar oculto (visibility evita el foco por teclado) */
+    #sidebar-toggle:checked ~ .sidebar-navigation {
+        width: 0;
+        min-width: 0;
+        visibility: hidden;
+        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0.25s;
     }
-
-    .bottom-nav .nav-link .glyphicon {
-        font-size: 1.8rem !important; /* Iconos más grandes */
-        margin-bottom: 3px;
+ 
+    .sidebar-navigation .logo-container {
+        padding: 12px 8px;
     }
-
-    .bottom-nav .nav-link.active,
-    .bottom-nav .nav-link:hover {
-        color: var(--color-primario);
-        transform: scale(1.05);
+ 
+    .brand-toggle img {
+        max-width: 94px;
     }
-
-    /* Espacio extra al final para que el último contenido no quede tapado */
-    .main-content-menu {
-        padding-bottom: 70px !important;
+ 
+    .nav-list-sidebar {
+        margin: 8px 0 !important;
+    }
+ 
+    .nav-list-sidebar .nav-link {
+        padding: 14px 8px !important;
+        font-size: 1.2rem;
+    }
+ 
+    .nav-list-sidebar .nav-link .glyphicon {
+        font-size: 1.6rem;
+        margin-right: 6px;
+    }
+ 
+    .nav-list-sidebar .nav-link.active,
+    .nav-list-sidebar .nav-link:hover {
+        border-left-width: 4px !important;
+        padding-left: 4px !important;
+    }
+ 
+    .user-profile-desktop {
+        padding: 12px 8px;
+        font-size: 1.2rem;
+    }
+ 
+    .user-profile-desktop .glyphicon {
+        font-size: 1.6rem;
+        padding: 5px;
+        margin-right: 6px;
+    }
+ 
+    /* --- Logo del banner: visible solo con el sidebar cerrado --- */
+    #sidebar-toggle:checked ~ .main-content-menu .brand-toggle-open {
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 4px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+ 
+    .brand-toggle-open img {
+        display: block;
+        height: 28px;
+        width: auto;
+        filter:brightness(0) invert(1);
+    }
+ 
+    /* Foco visible con teclado sobre los logos-botón */
+    #sidebar-toggle:focus-visible ~ .sidebar-navigation .brand-toggle,
+    #sidebar-toggle:focus-visible ~ .main-content-menu .brand-toggle-open {
+        outline: 3px solid var(--color-texto);
+        outline-offset: 2px;
+    }
+ 
+    /* --- Contenido --- */
+    .menu-banner-header .section-title {
+        font-size: 2.2rem;
+    }
+ 
+    .menu-section {
+        padding: 15px 12px;
     }
 }

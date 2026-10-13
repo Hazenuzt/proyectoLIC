@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú - Restaurante</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="menu-page">
 
+    <!-- BARRA SUPERIOR (solo pantallas grandes) -->
     <header class="main-header" id="main-header">
-        <div class="logo-container" id="logo-container">
-            <h1 class="brand-title" id="brand-title">Restaurante</h1>
+        <div class="header-brand">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="Terra">
+            </a>  
         </div>
         <nav class="main-nav" id="main-nav">
-            <ul class="nav-list" id="nav-list">
+            <ul class="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
                 <li class="nav-item"><a href="menu.html" class="nav-link active">Menú</a></li>
                 <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
@@ -29,16 +33,17 @@
 
     <div class="menu-layout-wrapper">
             
+        <input type="checkbox" id="sidebar-toggle" class="sidebar-checkbox">
+
         <!-- SIDEBAR / CABECERA -->
-        <aside class="sidebar-navigation" id="main-header">
-            <div class="logo-container" id="logo-container">
-                <h1 class="brand-title" id="brand-title">terra</h1>
-                <div class="user-avatar-mobile hidden-md hidden-lg">
-                    <span class="glyphicon glyphicon-user"></span>
-                </div>
+        <aside class="sidebar-navigation" id="sidebar">
+            <div class="logo-container">
+                <label for="sidebar-toggle" class="brand-toggle" title="Ocultar menu">
+                <img src="../img/logo.png" alt="Terra">
+                </label>  
             </div>
 
-            <!-- Cambiamos la clase 'main-nav' por 'sidebar-nav' para desvincularlo totalmente del CSS base -->
+            <!-- sidebar -->
             <nav class="sidebar-nav">
                 <ul class="nav-list-sidebar">
                     <li class="nav-item">
@@ -74,78 +79,106 @@
                 </ul>
             </nav>
 
-            <div class="user-profile-desktop hidden-xs hidden-sm">
+            <div class="user-profile-desktop">
                 <span class="glyphicon glyphicon-user"></span>
                 <span class="user-name">Usuario</span>
             </div>
         </aside>
 
-        <!-- NAVEGACIÓN INFERIOR PARA MÓVILES -->
-        <nav class="bottom-nav hidden-md hidden-lg" id="bottom-nav">
-            <a href="../index.html" class="nav-link">
-                <span class="glyphicon glyphicon-home"></span><br>Inicio
-            </a>
-            <a href="menu.html" class="nav-link active">
-                <span class="glyphicon glyphicon-cutlery"></span><br>Menú
-            </a>
-            <a href="reservas.html" class="nav-link">
-                <span class="glyphicon glyphicon-shopping-cart"></span><br>Pedido
-            </a>
-            <a href="contactos.html" class="nav-link">
-                <span class="glyphicon glyphicon-comment"></span><br>Contacto
-            </a>
-        </nav>
-
         <!-- CONTENIDO PRINCIPAL -->
         <main class="main-content-menu" id="main-content-menu">
             
             <header class="menu-banner-header">
+                <label for="sidebar-toggle" class="brand-toggle-open" title="Mostrar menú">
+                    <img src="../img/logo.png" alt="terra">
+                </label>
                 <h2 class="section-title" id="menu-title">Nuestro Menú</h2>
             </header>
 
             <section class="menu-section" id="menu-section">
                 <div class="menu-grid-container" id="menu-grid-container">
+
+                    <!--La idea es presentar el menu como seleccion para que se pueda ver
+                    por secciones, entonces se ocupará unos radios ocultos y botones visibles para
+                    poder cambiar entre secciones. Esto implica ocultar secciones, etc etc-->
+
+                    <!--radios ocultos-->
                     
-                    <!-- SECCIÓN: PLATILLOS FUERTES -->
-                    <div class="category-block">
+                    <input type="radio" name="menu-tab" id="tab-fuertes" class="tab-radio" checked>
+                    <input type="radio" name="menu-tab" id="tab-postres" class="tab-radio">
+                    <input type="radio" name="menu-tab" id="tab-bebidas" class="tab-radio">
+
+                    <!--botones de pestaña-->
+                    <div class="menu-tabs">
+                        <label for="tab-fuertes" class="menu-tab-label label-fuertes">Platillos fuertes</label>
+                        <label for="tab-postres" class="menu-tab-label label-postres">Postres</label>
+                        <label for="tab-bebidas" class="menu-tab-label label-bebidas">Bebidas</label>
+                    </div>
+                    
+                    <!--panel de platillos fuertes-->
+                    <div class="category-block panel-fuertes">
                         <h3 class="category-title">Platillos Fuertes</h3>
                         <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Platillo" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- SECCIÓN: POSTRES -->
-                    <div class="category-block">
+
+                    <div class="category-block panel-postres">
                         <h3 class="category-title">Postres</h3>
                         <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Postre" class="img-responsive center-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Postre" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Postre" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Postre" class="img-responsive center-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
+                        </div>
+                    </div>
+
+                    <div class="category-block panel-bebidas">
+                        <h3 class="category-title">Bebidas</h3>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Bebidas" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-4 dish-card">
+                                    <img src="https://placehold.co/400x300" alt="Bebidas" class="img-responsive center-block">
+                                    <h4 class="dish-title">Lorem Ipsum</h4>
+                                    <p class="dish-desc hidden-xs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                                    <span class="dish-price">$00.00</span>
+                                </div>
                             </div>
                         </div>
                     </div>
