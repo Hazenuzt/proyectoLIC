@@ -25,7 +25,7 @@
     align-items: stretch;
 }
 
-/* Tarjeta individual */
+/* div de cada integrante, osea la targeta */
 .dev-card {
     background-color: #ffffff;
     padding: 10px 14px 35px;
@@ -35,7 +35,7 @@
     overflow: hidden;
 }
 
-/* Imagen */
+/* div del contenedor de la darjeta*/
 .dev-image-container {
     width: 100%;
     height: 200px;
@@ -44,7 +44,7 @@
     overflow: hidden;
 }
 
-/* Imagen del integrante */
+/* foto de cada integrante */
 .dev-image-container img {
     display: block;
     width: 100%;
@@ -52,7 +52,7 @@
     object-fit: cover;
 }
 
-/* Nombre */
+/*Para el nombre*/
 .dev-name {
     font-family: 'Playfair Display', serif;
     font-size: 18px;
@@ -61,7 +61,7 @@
     margin: 0 0 14px;
 }
 
-/* Descripción */
+/* La descripcion*/
 .dev-description {
     font-family: 'Poppins', sans-serif;
     font-size: 11px;
@@ -70,7 +70,7 @@
     margin: 0;
 }
 
-/* Tabletas */
+/* Responsive tablets */
 @media (max-width: 900px) {
     .devs-grid-container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -78,7 +78,7 @@
     }
 }
 
-/* Celulares */
+/* responsive celulares */
 @media (max-width: 480px) {
     .devs-section {
         padding: 25px 20px;
