@@ -1,3 +1,6 @@
+body {
+    background-color: red !important;
+}
 /* Sección principal */
 .devs-section {
     width: 100%;
