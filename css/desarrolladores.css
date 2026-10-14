@@ -1,19 +1,17 @@
-/* Estilo del banner con franja marrón */
-.menu-banner-header {
+/* Franja marrón horizontal para la página de desarrolladores */
+.dearolladores-banner-header {
     position: relative;
-    background-color: var(--color-primario); /* Color marrón de la franja */
-    padding: 22px 20px;
+    background-color: var(--color-primario); /* Usa el mismo color marrón del sitio */
+    padding: 18px 20px;
     text-align: center;
-    width: 100%;
 }
 
-/* Estilo del título dentro de la franja */
-.menu-banner-header .section-title {
-    color: var(--colo-fondo-general); /* Texto en color claro/crema */
+/* Título centrado dentro de la franja */
+.dearolladores-banner-header .section-title {
+    color: var(--colo-fondo-general); /* Color de texto claro/crema */
     font-family: var(--font-heading);  /* O 'Playfair Display', serif */
     font-size: clamp(2.4rem, 3.5vw, 3.2rem);
     margin: 0;
-    font-weight: 600;
 }
 /* Sección principal */
 .devs-section {
