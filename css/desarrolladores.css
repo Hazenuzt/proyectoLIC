@@ -11,7 +11,7 @@
     min-height: 100vh;
 }
 .header-brand img {
-    height: 35px; /* Cambia a 35px o 30px si lo quieres aún más pequeño */
+    height: 40px; /* Cambia a 35px o 30px si lo quieres aún más pequeño */
     width: auto;
 }
 /* ===================================================
