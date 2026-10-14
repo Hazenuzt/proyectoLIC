@@ -233,8 +233,8 @@
     }
 
     .sidebar-navigation {
-        width: 110px;
-        min-width: 110px;
+        width: 130px;
+        min-width: 130px;
         overflow-x: hidden;
         white-space: nowrap;
         transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0s;
