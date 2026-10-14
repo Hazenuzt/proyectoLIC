@@ -294,7 +294,7 @@
 
     /* --- Sidebar compacto con animación de colapso --- */
     .sidebar-navigation {
-        width: 110px;
+        width: 120px;
         min-width: 110px;
         overflow-x: hidden;
         white-space: nowrap;
