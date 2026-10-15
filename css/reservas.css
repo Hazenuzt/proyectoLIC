@@ -351,6 +351,7 @@
    =================================================== */
 
 /* PANTALLAS GRANDES (Escritorio >= 768px) */
+/*
 @media (min-width: 768px) {
     .booking-layout-wrapper {
         flex-direction: row;
@@ -368,10 +369,10 @@
     .main-content-booking {
         width: calc(100% - 280px);
     }
-}
+} */
 
 /* PANTALLAS PEQUEÑAS (Móvil < 768px) */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .booking-layout-wrapper {
         flex-direction: column;
     }
@@ -429,6 +430,123 @@
 
     .main-content-booking {
         padding-bottom: 75px !important;
+    }
+
+    .custom-form .form-row {
+        flex-direction: row;
+    }
+} 
+*/
+
+/*Nuevo codigo*/
+/* Checkbox oculto y botones de control del sidebar */
+.sidebar-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.brand-toggle {
+    display: block;
+    margin: 0;
+    cursor: pointer;
+}
+
+.brand-toggle img {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.brand-toggle-open {
+    display: none;
+}
+
+/* ===================================================
+   BREAKPOINTS RESPONSIVOS (Estándar del sitio)
+   =================================================== */
+
+/* PANTALLAS GRANDES (Escritorio >= 768px): Usa barra superior y oculta sidebar */
+@media (min-width: 768px) {
+    .sidebar-navigation {
+        display: none !important;
+    }
+
+    .booking-layout-wrapper {
+        min-height: calc(100vh - var(--header-height));
+        flex-direction: column;
+    }
+
+    .main-content-booking {
+        width: 100%;
+    }
+}
+
+/* PANTALLAS PEQUEÑAS (Móvil < 768px): Oculta barra superior y activa sidebar colapsable */
+@media (max-width: 767px) {
+    .booking-page .main-header {
+        display: none !important;
+    }
+
+    .booking-layout-wrapper {
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+    }
+
+    .sidebar-navigation {
+        background-color: var(--color-fondo-alt);
+        display: flex;
+        flex-direction: column;
+        z-index: 101;
+        width: 150px; /* Ancho cómodo para el menú lateral móvil */
+        min-width: 150px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        overflow-x: hidden;
+        white-space: nowrap;
+        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0s;
+    }
+
+    /* Checkbox marcado oculta el sidebar lateral */
+    #sidebar-toggle:checked ~ .sidebar-navigation {
+        width: 0;
+        min-width: 0;
+        visibility: hidden;
+        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0.25s;
+    }
+
+    /* Muestra el logo-botón en la franja marrón cuando el menú está oculto */
+    #sidebar-toggle:checked ~ .main-content-booking .brand-toggle-open {
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 4px;
+        cursor: pointer;
+    }
+
+    .brand-toggle-open img {
+        display: block;
+        height: 26px;
+        width: auto;
+        filter: brightness(0) invert(1);
+    }
+
+    .main-content-booking {
+        flex: 1;
+        min-width: 0;
+        padding-bottom: 30px;
+    }
+
+    .booking-banner-header {
+        position: relative;
+        padding: 18px 20px 18px 45px; /* Espacio para que el logo móvil no tape el texto */
     }
 
     .custom-form .form-row {
