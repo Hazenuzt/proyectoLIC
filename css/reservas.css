@@ -352,7 +352,7 @@
 
 /* PANTALLAS GRANDES (Escritorio >= 768px) */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .booking-layout-wrapper {
         flex-direction: row;
     }
@@ -372,7 +372,7 @@
 } 
 
 /* PANTALLAS PEQUEÑAS (Móvil < 768px) */
- @media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .booking-layout-wrapper {
         flex-direction: column;
     }
@@ -436,3 +436,127 @@
         flex-direction: row;
     }
 } 
+
+
+/*Nuevo codigo */
+
+/* CONTENEDOR PRINCIPAL */
+.booking-layout-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: calc(100vh - var(--header-height, 70px));
+}
+
+/* CONTENIDO DE RESERVAS */
+.booking-layout-wrapper .main-content-booking {
+    flex: 1;
+    min-width: 0;
+    width: calc(100% - 280px);
+}
+
+/* CHECKBOX PARA CONTROLAR EL MENÚ */
+.booking-layout-wrapper .sidebar-checkbox {
+    display: none;
+}
+
+/* BOTONES PARA ABRIR Y CERRAR EL MENÚ */
+.booking-page .brand-toggle,
+.booking-page .brand-toggle-open {
+    cursor: pointer;
+}
+
+/* ================================================
+   ESCRITORIO: 768px EN ADELANTE
+   ================================================ */
+@media (min-width: 768px) {
+
+    /* Mostrar la barra de navegación superior */
+    .booking-page .main-header {
+        display: flex;
+    }
+
+    /* Ocultar el menú lateral en escritorio */
+    .booking-page .sidebar-navigation {
+        display: none;
+    }
+
+    /* El contenido utiliza todo el ancho */
+    .booking-layout-wrapper .main-content-booking {
+        width: 100%;
+    }
+
+    /* Ocultar el botón para reabrir el menú */
+    .booking-page .brand-toggle-open {
+        display: none;
+    }
+}
+
+/* ================================================
+   MÓVILES: MENOS DE 768px
+   ================================================ */
+@media (max-width: 767px) {
+
+    /* Ocultar la barra superior */
+    .booking-page .main-header {
+        display: none;
+    }
+
+    /* Mantener el menú y el contenido en una fila */
+    .booking-layout-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* Menú lateral compacto, como en menu.css */
+    .booking-layout-wrapper .sidebar-navigation {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: auto;
+        align-self: flex-start;
+        width: 130px;
+        min-width: 110px;
+        min-height: 100vh;
+        height: auto;
+        flex-shrink: 0;
+        overflow: hidden;
+        transition: width 0.3s ease, min-width 0.3s ease;
+    }
+
+    /* Contraer el menú al marcar el checkbox */
+    #sidebar-toggle:checked
+    ~ .booking-layout-wrapper .sidebar-navigation {
+        width: 0;
+        min-width: 0;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+    /* Ajustar el contenido principal */
+    .booking-layout-wrapper .main-content-booking {
+        flex: 1;
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* Mostrar el botón para cerrar el menú */
+    .booking-page .brand-toggle {
+        display: block;
+    }
+
+    /* Ocultar el botón de reapertura inicialmente */
+    .booking-page .brand-toggle-open {
+        display: none;
+    }
+
+    /* Mostrar el botón de reapertura cuando el menú esté cerrado */
+    #sidebar-toggle:checked
+    ~ .booking-layout-wrapper .main-content-booking
+    .brand-toggle-open {
+        display: block;
+    }
+}
