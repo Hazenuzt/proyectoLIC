@@ -15,6 +15,11 @@
     min-height: 100vh;
 }
 
+.header-brand img {
+    height: 40px;
+    width: auto;
+}
+
 /* ===================================================
    1. NAVEGACIÓN LATERAL (SIDEBAR Y BOTTOM NAV)
    =================================================== */
