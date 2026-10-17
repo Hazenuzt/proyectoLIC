@@ -108,7 +108,7 @@
     font-size: clamp(1.15rem, 1.3vw, 1.35rem);
     font-weight: 600;
     color: var(--color-texto);
-    margin-top: auto;
+   /* margin-top: auto; */
 }
 
 .user-profile-desktop .glyphicon {
@@ -568,7 +568,7 @@
     /* Mostrar el botón de reapertura cuando el menú esté cerrado */
     #sidebar-toggle:checked
     ~ .booking-layout-wrapper .main-content-booking
-    .brand-toggle-open {
+ {
         display: block;
     }
 }
