@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: column;
     z-index: 101;
+   margin-top: auto;
 }
 
 .logo-container {
@@ -107,10 +108,6 @@
     font-size: clamp(1.15rem, 1.3vw, 1.35rem);
     font-weight: 600;
     color: var(--color-texto);
-    margin-top: auto;
-}
-
-.sidebar-navigation .user-profile-desktop {
     margin-top: auto;
 }
 
@@ -537,13 +534,19 @@
     }
 
     /* Contraer el menú al marcar el checkbox */
-    #sidebar-toggle:checked
+    /*#sidebar-toggle:checked
     ~ .booking-layout-wrapper .sidebar-navigation {
         width: 0;
         min-width: 0;
         visibility: hidden;
         overflow: hidden;
-    }
+    } */
+
+   #sidebar-toggle:checked ~ .sidebar-navigation {
+    width: 0 !important;
+    min-width: 0 !important;
+    visibility: hidden;
+}
 
     /* Ajustar el contenido principal */
     .booking-layout-wrapper .main-content-booking {
