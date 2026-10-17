@@ -259,10 +259,10 @@
 @media (max-width: 767px) {
     /* Ocultar la barra superior de escritorio */
     .main-header {
-        display: none;
+        display: none !important;
     }
 
-    /* Mostrar el contenedor en fila */
+    /* Mostrar el contenedor en fila y asegurar altura completa */
     .index-layout-wrapper {
         display: flex;
         flex-direction: row;
@@ -272,9 +272,9 @@
         overflow-x: hidden;
     }
 
-    /* Mostrar el menú lateral correctamente */
+    /* Mostrar el menú lateral correctamente ocupando los 100vh completos */
     .sidebar-navigation {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         width: 130px;
         min-width: 130px;
@@ -288,10 +288,25 @@
         background-color: var(--color-fondo-alt);
     }
 
+    /* CLAVE: Forzar a que la navegación intermedia crezca y ocupe todo el espacio */
+    .sidebar-navigation .sidebar-nav {
+        flex-grow: 1;
+    }
+
+    /* Anclar el bloque de usuario al fondo absoluto de los 100vh */
+    .sidebar-navigation .user-profile-desktop {
+        margin-top: auto !important;
+        width: 100%;
+        background-color: var(--color-secundario);
+        display: flex;
+        align-items: center;
+        padding: 15px 12px;
+    }
+
     /* Contraer el menú lateral al marcar el checkbox */
     #sidebar-toggle:checked ~ .index-layout-wrapper .sidebar-navigation {
-        width: 0;
-        min-width: 0;
+        width: 0 !important;
+        min-width: 0 !important;
         visibility: hidden;
         transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0.25s;
     }
@@ -309,7 +324,7 @@
 
     /* Mostrar el logo para reabrir el menú cuando está contraído */
     #sidebar-toggle:checked ~ .index-layout-wrapper .main-content-home .brand-toggle-open {
-        display: block;
+        display: block !important;
         position: absolute;
         left: 10px;
         top: 20px;
@@ -317,11 +332,6 @@
         padding: 4px;
         cursor: pointer;
         z-index: 10;
-    }
-   .sidebar-navigation .user-profile-desktop {
-        margin-top: auto;
-        width: 100%;
-        background-color: var(--color-secundario);
     }
 
     .brand-toggle-open img {
