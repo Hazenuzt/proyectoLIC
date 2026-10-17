@@ -534,19 +534,19 @@
     }
 
     /* Contraer el menú al marcar el checkbox */
-    /*#sidebar-toggle:checked
+    #sidebar-toggle:checked
     ~ .booking-layout-wrapper .sidebar-navigation {
         width: 0;
         min-width: 0;
         visibility: hidden;
         overflow: hidden;
-    } */
+    } 
 
-   #sidebar-toggle:checked ~ .sidebar-navigation {
-    width: 0 !important;
-    min-width: 0 !important;
+   /*#sidebar-toggle:checked ~ .sidebar-navigation {
+    width: 0 ;
+    min-width: 0;
     visibility: hidden;
-}
+}*/
 
     /* Ajustar el contenido principal */
     .booking-layout-wrapper .main-content-booking {
@@ -566,9 +566,15 @@
     }
 
     /* Mostrar el botón de reapertura cuando el menú esté cerrado */
-    #sidebar-toggle:checked
-    ~ .booking-layout-wrapper .main-content-booking
- {
-        display: block;
-    }
+  #sidebar-toggle:checked ~ .booking-layout-wrapper .main-content-booking .brand-toggle-open {
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 4px;
+    cursor: pointer;
+    z-index: 10;
+}
 }
