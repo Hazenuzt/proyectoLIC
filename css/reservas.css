@@ -110,6 +110,10 @@
     margin-top: auto;
 }
 
+.sidebar-navigation .user-profile-desktop {
+    margin-top: auto;
+}
+
 .user-profile-desktop .glyphicon {
     font-size: clamp(1.6rem, 1.8vw, 2rem);
     background-color: var(--color-fondo-alt);
