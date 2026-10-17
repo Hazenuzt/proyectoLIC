@@ -1,10 +1,8 @@
-
 .menu-page {
-    background-color: var(--colo-fondo-general);
-    padding-bottom: 0; /* anula el espacio reservado al nav inferior de base.css */
+    background-color: var(--color-fondo-general);
+    padding-bottom: 0;
 }
 
-/* LAYOUT PRINCIPAL: sidebar a la izquierda en todos los tamaños */
 .menu-layout-wrapper {
     display: flex;
     flex-direction: row;
@@ -12,132 +10,10 @@
     min-height: 100vh;
 }
 
-/* ===================================================
-   1. SIDEBAR
-   =================================================== */
-.sidebar-navigation {
-    background-color: var(--color-fondo-alt);
-    display: flex;
-    flex-direction: column;
-    z-index: 101;
-    width: 280px;
-    min-width: 280px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    overflow-y: auto;
-}
-
-.sidebar-navigation .logo-container {
-    background-color: var(--color-secundario);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sidebar-nav {
-    display: block;
-    width: 100%;
-    flex-grow: 1;
-}
-
-.nav-list-sidebar {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-list-sidebar .nav-item {
-    width: 100%;
-    margin: 0;
-}
-
-.nav-list-sidebar .nav-link {
-    display: flex;
-    align-items: center;
-    padding: 16px 22px;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
-    font-weight: 600;
-    color: var(--color-texto-secundario);
-    border-bottom: none;
-    text-decoration: none;
-    transition: background-color 0.2s ease, padding-left 0.2s ease;
-}
-
-.nav-list-sidebar .nav-link .glyphicon {
-    font-size: clamp(1.4rem, 1.6vw, 1.7rem);
-    margin-right: 15px;
-    color: var(--color-primario);
-}
-
-.nav-list-sidebar .nav-link.active,
-.nav-list-sidebar .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-left: 6px solid var(--color-primario);
-    color: var(--color-primario);
-    padding-left: 26px;
-}
-
-.user-profile-desktop {
-    background-color: var(--color-secundario);
-    padding: 18px 22px;
-    display: flex;
-    align-items: center;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
-    font-weight: 600;
-    color: var(--color-texto);
-    margin-top: auto;
-}
-
-.user-profile-desktop .glyphicon {
-    font-size: clamp(1.6rem, 1.8vw, 2rem);
-    background-color: var(--color-fondo-alt);
-    padding: 8px;
-    border-radius: 50%;
-    margin-right: 14px;
-}
-
-/* ===================================================
-   2. LOGO COMO BOTÓN PARA OCULTAR / MOSTRAR EL SIDEBAR
-   =================================================== */
- 
-/* Checkbox oculto (accesible por teclado) */
-.sidebar-checkbox {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
- 
-/* Logo dentro del sidebar: al pulsarlo se oculta el sidebar */
-.brand-toggle {
-    display: block;
-    margin: 0;
-    cursor: pointer;
-}
- 
-.brand-toggle img {
-    display: block;
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    margin: 0 auto;
-}
- 
-/* Logo dentro del banner: solo aparece en móvil con el sidebar cerrado */
-.brand-toggle-open {
-    display: none;
-}
-
-/* ===================================================
-   3. CONTENIDO PRINCIPAL, BANNER Y TARJETAS
-   =================================================== */
 .main-content-menu {
     flex: 1;
     min-width: 0;
-    background-color: var(--colo-fondo-general);
+    background-color: var(--color-fondo-general);
     display: flex;
     flex-direction: column;
 }
@@ -145,19 +21,19 @@
 .menu-banner-header {
     position: relative;
     background-color: var(--color-primario);
-    padding: 18px 20px;
+    padding: var(--spacing-lg) var(--spacing-md);
     text-align: center;
 }
 
 .menu-banner-header .section-title {
-    color: var(--colo-fondo-general);
+    color: var(--color-fondo-general);
     font-family: var(--font-heading);
     font-size: clamp(2.4rem, 3.5vw, 3.2rem);
     margin: 0;
 }
 
 .menu-section {
-    padding: 25px 35px;
+    padding: var(--spacing-lg) var(--spacing-xl);
     flex-grow: 1;
 }
 
@@ -171,14 +47,32 @@
     padding-bottom: 5px;
 }
 
+.menu-toggle {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    margin: var(--spacing-xs) 0 0 var(--spacing-xs);
+}
+
+.menu-toggle img {
+    height: 38px;
+    width: auto;
+}
+
 /* TARJETAS DE PLATILLOS */
 .dish-card {
     text-align: center;
     margin-bottom: 30px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--color-fondo-alt);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .dish-card img {
-    border-radius: 6px;
+    border-radius: 8px;
     height: clamp(130px, 15vw, 180px);
     width: 100%;
     object-fit: cover;
@@ -190,6 +84,7 @@
     font-weight: bold;
     color: var(--color-texto);
     margin: 8px 0 4px 0;
+    font-family: var(--font-heading);
 }
 
 .dish-card .dish-desc {
@@ -207,14 +102,8 @@
 }
 
 /* ===================================================
-   4. PESTAÑAS (radios + labels)
+   PESTAÑAS CON BOTONES (Controladas por JS)
    =================================================== */
-.tab-radio {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
 .menu-tabs {
     display: flex;
     gap: 10px;
@@ -222,165 +111,46 @@
     flex-wrap: wrap;
 }
 
-.menu-tab-label {
+.menu-tab-btn {
     padding: 10px 22px;
     border-radius: 30px;
     border: 2px solid var(--color-primario);
+    background-color: transparent;
     color: var(--color-primario);
     font-weight: 600;
-    font-size: clamp(1.2rem, 1.2vw, 1.4rem);
+    font-size: clamp(1.1rem, 1.2vw, 1.3rem);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
-    margin: 0;
 }
 
-.menu-tab-label:hover {
+.menu-tab-btn:hover {
     background-color: rgba(140, 59, 27, 0.1);
 }
 
-/* Todos los paneles ocultos por defecto */
+.menu-tab-btn.active {
+    background-color: var(--color-primario);
+    color: var(--color-fondo-general);
+}
+
+/* Paneles del menú */
 .category-block {
     display: none;
 }
 
-/* Mostrar el panel según el radio marcado */
-#tab-fuertes:checked ~ .panel-fuertes,
-#tab-postres:checked ~ .panel-postres,
-#tab-bebidas:checked ~ .panel-bebidas {
+.category-block.active {
     display: block;
 }
 
-/* Pestaña activa */
-#tab-fuertes:checked ~ .menu-tabs .label-fuertes,
-#tab-postres:checked ~ .menu-tabs .label-postres,
-#tab-bebidas:checked ~ .menu-tabs .label-bebidas {
-    background-color: var(--color-primario);
-    color: var(--colo-fondo-general);
-}
-
-/* Foco visible con teclado */
-#tab-fuertes:focus-visible ~ .menu-tabs .label-fuertes,
-#tab-postres:focus-visible ~ .menu-tabs .label-postres,
-#tab-bebidas:focus-visible ~ .menu-tabs .label-bebidas {
-    outline: 3px solid var(--color-texto);
-    outline-offset: 2px;
-}
-
 /* ===================================================
-   5. Pantallas grandes, se usa barra superior
+   MEDIA QUERIES
    =================================================== */
 @media (min-width: 768px) {
-    .sidebar-navigation {
-        display: none;
-    }
-
     .menu-layout-wrapper {
         min-height: calc(100vh - var(--header-height));
     }
-    
-    .header-brand img {
-    height: 48px;
-    width: auto;
-}
 }
 
-/* ===================================================
-   6. PANTALLAS PEQUEÑAS: sidebar compacto, sin barra superior
-   =================================================== */
 @media (max-width: 767px) {
-    .menu-page .main-header {
-        display: none;
-    }
-
-    /* --- Sidebar compacto con animación de colapso --- */
-    .sidebar-navigation {
-        width: 130px;
-        min-width: 110px;
-        overflow-x: hidden;
-        white-space: nowrap;
-        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0s;
-    }
- 
-    /* Checkbox marcado = sidebar oculto (visibility evita el foco por teclado) */
-    #sidebar-toggle:checked ~ .sidebar-navigation {
-        width: 0;
-        min-width: 0;
-        visibility: hidden;
-        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0.25s;
-    }
- 
-    .sidebar-navigation .logo-container {
-        padding: 12px 8px;
-    }
- 
-    .brand-toggle img {
-        max-width: 94px;
-    }
- 
-    .nav-list-sidebar {
-        margin: 8px 0 !important;
-    }
- 
-    .nav-list-sidebar .nav-link {
-        padding: 14px 8px !important;
-        font-size: 1.2rem;
-    }
- 
-    .nav-list-sidebar .nav-link .glyphicon {
-        font-size: 1.6rem;
-        margin-right: 6px;
-    }
- 
-    .nav-list-sidebar .nav-link.active,
-    .nav-list-sidebar .nav-link:hover {
-        border-left-width: 4px !important;
-        padding-left: 4px !important;
-    }
- 
-    .user-profile-desktop {
-        padding: 12px 8px;
-        font-size: 1.2rem;
-    }
- 
-    .user-profile-desktop .glyphicon {
-        font-size: 1.6rem;
-        padding: 5px;
-        margin-right: 6px;
-    }
- 
-    /* --- Logo del banner: visible solo con el sidebar cerrado --- */
-    #sidebar-toggle:checked ~ .main-content-menu .brand-toggle-open {
-        display: block;
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        margin: 0;
-        padding: 4px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-    }
- 
-    .brand-toggle-open img {
-        display: block;
-        height: 28px;
-        width: auto;
-        filter:brightness(0) invert(1);
-    }
- 
-    /* Foco visible con teclado sobre los logos-botón */
-    #sidebar-toggle:focus-visible ~ .sidebar-navigation .brand-toggle,
-    #sidebar-toggle:focus-visible ~ .main-content-menu .brand-toggle-open {
-        outline: 3px solid var(--color-texto);
-        outline-offset: 2px;
-    }
- 
-    /* --- Contenido --- */
-    .menu-banner-header .section-title {
-        font-size: 2.2rem;
-    }
- 
     .menu-section {
         padding: 15px 12px;
     }

@@ -5,7 +5,7 @@
     --color-primario: #8c3b1b;
     --color-primario-oscuro:#8c4e34;
     --color-secundario:#b88a55;
-    --colo-fondo-general:#fef5e6;
+    --color-fondo-general:#fef5e6; 
     --color-fondo-alt: #f4e1c1;
     --color-texto: #793634;
     --color-texto-secundario: #5a2a1b;
@@ -23,6 +23,13 @@
     /*altura de header y footer*/
     --header-height: 64px;
     --bottom-nav-height: 60px;
+
+    /*variables de bootstrap que usan la paleta de colores*/
+    --bs-body-bg: var(--color-fondo-general);
+    --bs-body-color: var(--color-texto);
+    --bs-body-font-family: var(--font-body);
+    --bs-link-color: var(--color-primario);
+    --bs-link-hover-color: var(--color-primario-oscuro);
 }
 
 /*======base=======*/
@@ -34,7 +41,7 @@
 
 body{
     font-family: var(--font-body);
-    background-color: var(--colo-fondo-general);
+    background-color: var(--color-fondo-general);
     color: var(--color-texto);
     line-height: 1.6;
     padding-bottom: var(--bottom-nav-height);/*espacio para el nav fijo en móviles*/
@@ -47,6 +54,10 @@ h1,h2,h3{
 
 a{
     text-decoration: none;
+    color: inherit;
+}
+
+a:hover{
     color: inherit;
 }
 
@@ -89,9 +100,10 @@ img{
 }
 
 .nav-link{
+    display: inline-block;
     font-weight: 500;
     color: var(--color-primario);
-    padding-bottom: 4px;
+    padding: 0 0 4px;
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s ease;
 }
@@ -132,27 +144,34 @@ img{
     color: var(--color-texto-secundario);
 }
 
-/*========== botones ========*/
+/*========== botones ==========*/
 .btn-primary {
-    background-color: var(--color-primario);
-    border-color: var(--color-primario);
-}
-
-.btn-primary:hover{
-    background-color: var(--color-primario-oscuro);
-    border-color: var(--color-primario-oscuro);
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--color-primario);
+    --bs-btn-border-color: var(--color-primario);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--color-primario-oscuro);
+    --bs-btn-hover-border-color: var(--color-primario-oscuro);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--color-primario-oscuro);
+    --bs-btn-active-border-color: var(--color-primario-oscuro);
+    --bs-btn-focus-shadow-rgb: 140, 59, 27;
 }
 
 .btn-secondary{
-    background-color: transparent;
-    border: 2px solid var(--color-primario);
-    color: var(--color-primario);
+    --bs-btn-color: var(--color-primario);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: var(--color-primario);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--color-primario);
+    --bs-btn-hover-border-color: var(--color-primario);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--color-primario);
+    --bs-btn-active-border-color: var(--color-primario);
+    --bs-btn-focus-shadow-rgb: 140, 59, 27;
+    --bs-btn-border-width: 2px;
 }
 
-.btn-secondary:hover{
-    background-color: var(--color-primario);
-    color: white;
-}
 /*========== media queries para diseño responsivo  ========*/
 @media (min-width: 768px) {
     body{
@@ -168,9 +187,121 @@ img{
     }
 }
 
-.container-custom{
+.container{
     width: 100%;
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
+}
+
+
+/* ===================================================
+   NAVEGACIÓN COMPARTIDA (todas las páginas)
+   - Logo del header
+   - Botón de menú en móvil
+   - Menú lateral
+   =================================================== */
+.header-brand img {
+    height: 40px;
+    width: auto;
+}
+
+.header-menu-btn {
+    border: 0;
+    background: transparent;
+    color: var(--color-primario);
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0 4px;
+    cursor: pointer;
+}
+
+/* ===================================================
+   1. MENÚ LATERAL MÓVIL 
+   =================================================== */
+.sidebar-navigation {
+    --bs-offcanvas-width: 260px;
+    --bs-offcanvas-bg: var(--color-fondo-alt);
+    --bs-offcanvas-color: var(--color-texto-secundario);
+}
+
+.sidebar-navigation .logo-container {
+    background-color: var(--color-secundario);
+    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-navigation .logo-container img {
+    display: block;
+    max-width: 120px;
+    height: auto;
+}
+
+.sidebar-navigation .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.sidebar-nav {
+    width: 100%;
+    flex-grow: 1;
+}
+
+.nav-list-sidebar {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-list-sidebar .nav-item {
+    width: 100%;
+    margin: 0;
+}
+
+.nav-list-sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 16px 22px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+    border-bottom: none;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.nav-list-sidebar .nav-link .bi {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    color: var(--color-primario);
+}
+
+.nav-list-sidebar .nav-link.active,
+.nav-list-sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-left: 6px solid var(--color-primario);
+    color: var(--color-primario);
+    padding-left: 16px; /* compensa el borde de 6px para que no se mueva el contenido */
+}
+
+.user-profile-desktop {
+    background-color: var(--color-secundario);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-top: auto;
+}
+
+.user-profile-desktop .bi {
+    font-size: 1.6rem;
+    background-color: var(--color-fondo-alt);
+    padding: 4px 8px;
+    border-radius: 50%;
+    margin-right: 14px;
 }

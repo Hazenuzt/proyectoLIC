@@ -1,165 +1,58 @@
-.menu-page {
-    background-color: var(--colo-fondo-general);
-    padding-bottom: 0;
-}
-
-/* LAYOUT PRINCIPAL: sidebar a la izquierda */
-.menu-layout-wrapper {
+/* ===================================================
+   PÁGINA DE DESARROLLADORES
+   =================================================== */
+.devs-page {
+    background-color: var(--color-fondo-general);
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
     min-height: 100vh;
 }
-.header-brand img {
-    height: 40px; /* Cambia a 35px o 30px si lo quieres aún más pequeño */
-    width: auto;
-}
-/* ===================================================
-   1. SIDEBAR LATERAL
-   =================================================== */
-.sidebar-navigation {
-    background-color: var(--color-fondo-alt);
-    display: flex;
-    flex-direction: column;
-    z-index: 101;
-    width: 280px;
-    min-width: 280px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    overflow-y: auto;
-}
 
-.sidebar-navigation .logo-container {
-    background-color: var(--color-secundario);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sidebar-nav {
-    display: block;
-    width: 100%;
-    flex-grow: 1;
-}
-
-.nav-list-sidebar {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-list-sidebar .nav-item {
-    width: 100%;
-    margin: 0;
-}
-
-.nav-list-sidebar .nav-link {
-    display: flex;
-    align-items: center;
-    padding: 16px 22px;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
-    font-weight: 600;
-    color: var(--color-texto-secundario);
-    border-bottom: none;
-    text-decoration: none;
-    transition: background-color 0.2s ease, padding-left 0.2s ease;
-}
-
-.nav-list-sidebar .nav-link .glyphicon {
-    font-size: clamp(1.4rem, 1.6vw, 1.7rem);
-    margin-right: 15px;
-    color: var(--color-primario);
-}
-
-.nav-list-sidebar .nav-link.active,
-.nav-list-sidebar .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-left: 6px solid var(--color-primario);
-    color: var(--color-primario);
-    padding-left: 26px;
-}
-
-.user-profile-desktop {
-    background-color: var(--color-secundario);
-    padding: 18px 22px;
-    display: flex;
-    align-items: center;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
-    font-weight: 600;
-    color: var(--color-texto);
-    margin-top: auto;
-}
-
-.user-profile-desktop .glyphicon {
-    font-size: clamp(1.6rem, 1.8vw, 2rem);
-    background-color: var(--color-fondo-alt);
-    padding: 8px;
-    border-radius: 50%;
-    margin-right: 14px;
-}
-
-/* ===================================================
-   2. CONTROLES DE APERTURA / CIERRE (Checkbox y logos)
-   =================================================== */
-.sidebar-checkbox {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.brand-toggle {
-    display: block;
-    margin: 0;
-    cursor: pointer;
-}
-
-.brand-toggle img {
-    display: block;
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    margin: 0 auto;
-}
-
-.brand-toggle-open {
-    display: none;
-}
-
-/* ===================================================
-   3. CONTENIDO PRINCIPAL Y BANNER
-   =================================================== */
-.main-content-menu {
+.main-content-devs {
     flex: 1;
-    min-width: 0;
-    background-color: var(--colo-fondo-general);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.dearolladores-banner-header {
-    position: relative;
+/* ===================================================
+   1. BANNER DE ENCABEZADO
+   =================================================== */
+.desarrolladores-banner-header {
     background-color: var(--color-primario);
-    padding: 18px 20px 18px 50px;
+    padding: var(--spacing-lg) var(--spacing-md);
     text-align: center;
 }
 
-.dearolladores-banner-header .section-title {
-    color: var(--colo-fondo-general);
+.desarrolladores-banner-header .section-title {
+    color: var(--color-fondo-general);
     font-family: var(--font-heading);
-    font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+    font-size: clamp(2rem, 3.5vw, 3rem);
     margin: 0;
 }
 
 /* ===================================================
-   4. SECCIÓN DE TARJETAS DE DESARROLLADORES
+   2. BOTÓN FLOTANTE / LOGO MÓVIL (Igual a index)
+   =================================================== */
+.menu-toggle {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    margin: var(--spacing-xs) 0 0 var(--spacing-xs);
+}
+
+.menu-toggle img {
+    height: 38px;
+    width: auto;
+}
+
+/* ===================================================
+   3. SECCIÓN DE TARJETAS DE DESARROLLADORES
    =================================================== */
 .devs-section {
     width: 100%;
-    padding: 40px 22px;
+    padding: var(--spacing-xl) var(--spacing-lg);
     box-sizing: border-box;
     flex-grow: 1;
 }
@@ -167,129 +60,81 @@
 .devs-grid-container {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px;
+    gap: var(--spacing-lg);
     width: 100%;
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
     align-items: stretch;
 }
 
 .dev-card {
     background-color: #ffffff;
-    padding: 10px 14px 35px;
-    box-sizing: border-box;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
+    border-radius: 12px;
+    border: 1px solid var(--color-fondo-alt);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
-    min-width: 0;
-    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dev-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .dev-image-container {
     width: 100%;
-    height: 200px;
-    margin-bottom: 22px;
-    background-color: #d9d9d9;
+    height: 220px;
+    margin-bottom: var(--spacing-md);
+    border-radius: 8px;
     overflow: hidden;
+    background-color: var(--color-fondo-alt);
 }
 
 .dev-image-container img {
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .dev-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #111111;
-    margin: 0 0 14px;
+    color: var(--color-primario);
+    margin-bottom: var(--spacing-xs);
 }
 
 .dev-description {
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px;
-    line-height: 1.2;
-    color: #111111;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--color-texto);
     margin: 0;
 }
 
 /* ===================================================
-   5. MEDIA QUERIES (Pantallas grandes y móviles)
+   4. MEDIA QUERIES (Responsividad)
    =================================================== */
-@media (min-width: 768px) {
-    .sidebar-navigation {
-        display: none; /* En escritorio usa la barra superior de base.css */
-    }
-    .menu-layout-wrapper {
-        min-height: calc(100vh - var(--header-height));
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 767px) {
-    .menu-page .main-header {
-        display: none;
-    }
-
-    .sidebar-navigation {
-        width: 130px;
-        min-width: 130px;
-        overflow-x: hidden;
-        white-space: nowrap;
-        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0s;
-    }
-
-    #sidebar-toggle:checked ~ .sidebar-navigation {
-        width: 0;
-        min-width: 0;
-        visibility: hidden;
-        transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0.25s;
-    }
-
-    #sidebar-toggle:checked ~ .main-content-menu .brand-toggle-open {
-        display: block;
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        margin: 0;
-        padding: 4px;
-        cursor: pointer;
-    }
-
-    .brand-toggle-open img {
-        display: block;
-        height: 28px; /* Tamaño pequeño del logo en el banner móvil */
-        width: auto;
-        filter: brightness(0) invert(1);
-    }
-}
-
-@media (max-width: 960px) {
+@media (max-width: 992px) {
     .devs-grid-container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
+        gap: var(--spacing-lg);
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .devs-section {
-        padding: 25px 20px;
+        padding: var(--spacing-lg) var(--spacing-md);
     }
 
     .devs-grid-container {
         grid-template-columns: 1fr;
-        gap: 22px;
+        gap: var(--spacing-md);
     }
 
     .dev-image-container {
-        height: 200px;
+        height: 240px;
     }
 }
-
-.main-footer {
-        width: 100%;
-        margin-top: auto;
-        text-align: center;
-    }

@@ -4,117 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas y Pedidos - Restaurante</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/reservas.css">
 </head>
+
 <body class="booking-page">
-        <!-- BARRA SUPERIOR (Pantallas grandes) -->
+
+    <!-- BARRA SUPERIOR (Escritorio >= 768px) -->
     <header class="main-header" id="main-header">
         <div class="header-brand">
-            <a href="../index.html">
+            <!-- En móviles -->
+            <button type="button" class="border-0 bg-transparent p-0 d-md-none" 
+                    data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menú">
                 <img src="../img/logo.png" alt="Terra">
-            </a>  
+            </button>
+
+            <!-- En escritorio-->
+            <a href="../index.html" class="d-none d-md-block">
+                <img src="../img/logo.png" alt="Terra">
+            </a> 
         </div>
         <nav class="main-nav" id="main-nav">
             <ul class="nav-list" id="nav-list">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
                 <li class="nav-item"><a href="menu.html" class="nav-link">Menú</a></li>
                 <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="reservas.html" class="nav-link">Reservas y Pedidos</a></li>
+                <li class="nav-item"><a href="reservas.html" class="nav-link active">Reservas y Pedidos</a></li>
                 <li class="nav-item"><a href="contactos.html" class="nav-link">Contacto</a></li>
-                <li class="nav-item"><a href="desarrolladores.html" class="nav-link active">Desarrolladores</a></li>
+                <li class="nav-item"><a href="desarrolladores.html" class="nav-link">Desarrolladores</a></li>
             </ul>
         </nav>
     </header>
 
-   <!--   <div class="menu-layout-wrapper"> -->
-         
-        <input type="checkbox" id="sidebar-toggle" class="sidebar-checkbox">
-                 <div class="booking-layout-wrapper"> 
-   <!--  <div class="booking-layout-wrapper"> -->
-
-        <!-- SIDEBAR / NAVEGACIÓN LATERAL (Mismo estándar) -->
-        <aside class="sidebar-navigation" id="sidebar">
-            <div class="logo-container" id="logo-container">
-                <label for="sidebar-toggle" class="brand-toggle" title="Ocultar menu">
+    <!-- SIDEBAR PARA MÓVILES -->
+     <div class="offcanvas offcanvas-start sidebar-navigation" tabindex="-1" id="sidebar" aria-label="Menú de navegación">
+        <div class="offcanvas-header logo-container">
+            <a href="../index.html">
                 <img src="../img/logo.png" alt="Terra">
-                </label>  
-            </div>
-
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menú"></button>
+        </div>
+ 
+        <div class="offcanvas-body">
             <nav class="sidebar-nav">
                 <ul class="nav-list-sidebar">
                     <li class="nav-item">
                         <a href="../index.html" class="nav-link">
-                            <span class="glyphicon glyphicon-home"></span>
+                            <i class="bi bi-house" aria-hidden="true"></i>
                             <span class="link-text">Inicio</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a href="menu.html" class="nav-link">
-                            <span class="glyphicon glyphicon-cutlery"></span>
+                            <i class="bi bi-cup-hot" aria-hidden="true"></i>
                             <span class="link-text">Menú</span>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="galeria.html" class="nav-link">
+                            <i class="bi bi-image" aria-hidden="true"></i>
+                            <span class="link-text">Galería</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="reservas.html" class="nav-link active">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <i class="bi bi-cart" aria-hidden="true"></i>
                             <span class="link-text">Pedido</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a href="contactos.html" class="nav-link">
-                            <span class="glyphicon glyphicon-comment"></span>
+                            <i class="bi bi-chat" aria-hidden="true"></i>
                             <span class="link-text">Contacto</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="desarrolladores.html" class="nav-link">
-                            <span class="glyphicon glyphicon-code"></span>
+                            <i class="bi bi-code-slash" aria-hidden="true"></i>
                             <span class="link-text">Coders</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-
+ 
             <div class="user-profile-desktop">
-                <span class="glyphicon glyphicon-user"></span>
+                <i class="bi bi-person" aria-hidden="true"></i>
                 <span class="user-name">Usuario</span>
             </div>
-        </aside>
+        </div>
+    </div>
 
-
-        <!-- NAVEGACIÓN INFERIOR PARA MÓVILES (Mismo estándar) -->
-        <!--   <nav class="bottom-nav hidden-md hidden-lg" id="bottom-nav">
-            <a href="../index.html" class="nav-link">
-                <span class="glyphicon glyphicon-home"></span><br>Inicio
-            </a>
-
-            <a href="menu.html" class="nav-link">
-                <span class="glyphicon glyphicon-cutlery"></span><br>Menú
-            </a>
-
-            <a href="reservas.html" class="nav-link active">
-                <span class="glyphicon glyphicon-shopping-cart"></span><br>Pedido
-            </a>
-
-            <a href="contactos.html" class="nav-link">
-                <span class="glyphicon glyphicon-comment"></span><br>Contacto
-            </a>
-        </nav>  -->
-
+    <div class="booking-layout-wrapper">
         <!-- CONTENIDO PRINCIPAL DE RESERVAS Y PEDIDOS -->
         <main class="main-content-booking" id="main-content-booking">
             
             <header class="booking-banner-header">
-
-                <label for="sidebar-toggle" class="brand-toggle-open" title="Mostrar menú">
-                    <img src="../img/logo.png" alt="terra">
-                </label>
-                <h2 class="section-title" id="booking-title">Reserva de Mesas y Ordenes</h2>
+                <h2 class="section-title" id="booking-title">Reserva de Mesas y Órdenes</h2>
             </header>
 
             <section class="booking-section" id="booking-section">
@@ -122,7 +110,7 @@
                 <!-- BLOQUE DE BIENVENIDA DE USUARIO -->
                 <div class="welcome-card">
                     <h4 class="welcome-user">Usuario</h4>
-                    <p class="welcome-message">¡Hola Usuario! , Que gusto poder atenderte hoy</p>
+                    <p class="welcome-message">¡Hola Usuario! Qué gusto poder atenderte hoy.</p>
                 </div>
 
                 <div class="booking-forms-grid">
@@ -141,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <label for="dish-qty">Cantidad</label>
+                                <label for="dish-qty">Cantidad:</label>
                                 <input type="number" id="dish-qty" class="form-control" min="1" value="1">
                             </div>
 
@@ -155,7 +143,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <label for="drink-qty">Cantidad</label>
+                                <label for="drink-qty">Cantidad:</label>
                                 <input type="number" id="drink-qty" class="form-control" min="1" value="1">
                             </div>
 
@@ -170,8 +158,8 @@
                         <h3 class="card-title">Reserva tu Mesa</h3>
                         <form id="reservation-form" class="custom-form">
                             <div class="form-row">
-                                <label for="res-date">Fecha :</label>
-                                <input type="date" id="res-date" class="form-control" placeholder="DD/MM/AAAA" required>
+                                <label for="res-date">Fecha:</label>
+                                <input type="date" id="res-date" class="form-control" required>
                             </div>
 
                             <div class="form-row">
@@ -180,12 +168,12 @@
                             </div>
 
                             <div class="form-row">
-                                <label for="res-guests">Numero de personas:</label>
+                                <label for="res-guests">Nº de personas:</label>
                                 <input type="number" id="res-guests" class="form-control" min="1" max="15" required>
                             </div>
 
                             <div class="form-row">
-                                <label for="res-zone">Seccion/Zona de mesa:</label>
+                                <label for="res-zone">Sección / Zona:</label>
                                 <select id="res-zone" class="form-control" required>
                                     <option value="">-- Seleccionar Zona --</option>
                                     <option value="interior">Interior</option>
@@ -242,9 +230,9 @@
                 </div>
             </footer>
         </main>
-
     </div>
 
-    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/reservas.js"></script>
 </body>
 </html>

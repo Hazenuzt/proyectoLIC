@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desarrolladores - Restaurante</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/desarrolladores.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body class="menu-page">
+<body class="devs-page">
 
-    <!-- BARRA SUPERIOR (Pantallas grandes) -->
+    <!-- BARRA SUPERIOR (Escritorio >= 768px) -->
     <header class="main-header" id="main-header">
         <div class="header-brand">
-            <a href="../index.html">
+            <!-- En móviles -->
+            <button type="button" class="border-0 bg-transparent p-0 d-md-none" 
+                    data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menú">
                 <img src="../img/logo.png" alt="Terra">
-            </a>  
+            </button>
+
+            <!-- En escritorio-->
+            <a href="../index.html" class="d-none d-md-block">
+                <img src="../img/logo.png" alt="Terra">
+            </a> 
         </div>
         <nav class="main-nav" id="main-nav">
             <ul class="nav-list" id="nav-list">
@@ -31,118 +38,121 @@
         </nav>
     </header>
 
-    <div class="menu-layout-wrapper">
-            
-        <input type="checkbox" id="sidebar-toggle" class="sidebar-checkbox">
-
-        <!-- SIDEBAR / MENÚ LATERAL (Solo visible en móviles) -->
-        <aside class="sidebar-navigation" id="sidebar">
-            <div class="logo-container">
-                <label for="sidebar-toggle" class="brand-toggle" title="Ocultar menú">
-                    <img src="../img/logo.png" alt="Terra">
-                </label>  
-            </div>
-
+    <!-- SIDEBAR PARA MÓVILES -->
+    <div class="offcanvas offcanvas-start sidebar-navigation" tabindex="-1" id="sidebar" aria-label="Menú de navegación">
+        <div class="offcanvas-header logo-container">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="Terra">
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menú"></button>
+        </div>
+ 
+        <div class="offcanvas-body">
             <nav class="sidebar-nav">
                 <ul class="nav-list-sidebar">
                     <li class="nav-item">
                         <a href="../index.html" class="nav-link">
-                            <span class="glyphicon glyphicon-home"></span>
+                            <i class="bi bi-house" aria-hidden="true"></i>
                             <span class="link-text">Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="menu.html" class="nav-link">
-                            <span class="glyphicon glyphicon-cutlery"></span>
+                            <i class="bi bi-cup-hot" aria-hidden="true"></i>
                             <span class="link-text">Menú</span>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="galeria.html" class="nav-link">
+                            <i class="bi bi-image" aria-hidden="true"></i>
+                            <span class="link-text">Galería</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="reservas.html" class="nav-link">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <i class="bi bi-cart" aria-hidden="true"></i>
                             <span class="link-text">Pedido</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="contactos.html" class="nav-link">
-                            <span class="glyphicon glyphicon-comment"></span>
+                            <i class="bi bi-chat" aria-hidden="true"></i>
                             <span class="link-text">Contacto</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="desarrolladores.html" class="nav-link active">
-                            <span class="glyphicon laptop-code"></span>
+                            <i class="bi bi-code-slash" aria-hidden="true"></i>
                             <span class="link-text">Coders</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-
+ 
             <div class="user-profile-desktop">
-                <span class="glyphicon glyphicon-user"></span>
+                <i class="bi bi-person" aria-hidden="true"></i>
                 <span class="user-name">Usuario</span>
             </div>
-        </aside>
-
-        <!-- CONTENIDO PRINCIPAL con conteenido principal -->
-        <main class="main-content-menu" id="main-content-devs">
-            
-            <header class="dearolladores-banner-header">
-                <!-- Botón de logo para desplegar el menú en móvil -->
-                <label for="sidebar-toggle" class="brand-toggle-open" title="Mostrar menú">
-                    <img src="../img/logo.png" alt="terra">
-                </label>
-                <h2 class="section-title" id="desarrolladores-title">Equipo de Desarrolladores</h2>
-            </header>
-
-            <section class="devs-section" id="devs-section">
-                  <!-- Contenedor Grid donde se cargarán los datos de los desarrolladores -->
-                <div class="devs-grid-container" id="devs-grid-container" data-container="developers-list">
-                    
-                    <div class="dev-card">
-                        <div class="dev-image-container">
-                            <img src="../img/desarrollador1.jpg" alt="Desarrollador 1">
-                        </div>
-                        <h3 class="dev-name">Nombre del integrante</h3>
-                        <p class="dev-description">Una breve descripcion, lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-                    </div>
-
-                    <div class="dev-card">
-                        <div class="dev-image-container">
-                            <img src="../img/desarrollador2.jpg" alt="Desarrollador 2">
-                        </div>
-                        <h3 class="dev-name">Nombre del integrante</h3>
-                        <p class="dev-description">Una breve descripcion, lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-                    </div>
-
-                    <div class="dev-card">
-                        <div class="dev-image-container">
-                            <img src="../img/desarrollador3.jpg" alt="Desarrollador 3">
-                        </div>
-                        <h3 class="dev-name">Nombre del integrante</h3>
-                        <p class="dev-description">Una breve descripcion, lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-                    </div>
-
-                    <div class="dev-card">
-                        <div class="dev-image-container">
-                            <img src="../img/desarrollador4.jpg" alt="Desarrollador 4">
-                        </div>
-                        <h3 class="dev-name">Nombre del integrante</h3>
-                        <p class="dev-description">Una breve descripcion, lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <footer class="main-footer" id="main-footer">
-                <div class="footer-container" id="footer-container">
-                    <p>&copy; Restaurante. Todos los derechos reservados.</p>
-                </div>
-            </footer>
-        </main>
-
+        </div>
     </div>
 
-    <script src="../js/main.js"></script>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content-devs" id="main-content-devs">
+        
+        <!-- BANNER DE ENCABEZADO -->
+        <header class="desarrolladores-banner-header">
+            <h2 class="section-title" id="desarrolladores-title">Equipo de Desarrolladores</h2>
+        </header>
+
+        <!-- SECCIÓN DE DESARROLLADORES -->
+        <section class="devs-section" id="devs-section">
+            <div class="devs-grid-container" id="devs-grid-container" data-container="developers-list">
+                
+                <div class="dev-card">
+                    <div class="dev-image-container">
+                        <img src="../img/desarrollador1.jpg" alt="Desarrollador 1">
+                    </div>
+                    <h3 class="dev-name">Nombre del integrante</h3>
+                    <p class="dev-description">Una breve descripción sobre las contribuciones y especialidad del desarrollador en el proyecto.</p>
+                </div>
+
+                <div class="dev-card">
+                    <div class="dev-image-container">
+                        <img src="../img/desarrollador2.jpg" alt="Desarrollador 2">
+                    </div>
+                    <h3 class="dev-name">Nombre del integrante</h3>
+                    <p class="dev-description">Una breve descripción sobre las contribuciones y especialidad del desarrollador en el proyecto.</p>
+                </div>
+
+                <div class="dev-card">
+                    <div class="dev-image-container">
+                        <img src="../img/desarrollador3.jpg" alt="Desarrollador 3">
+                    </div>
+                    <h3 class="dev-name">Nombre del integrante</h3>
+                    <p class="dev-description">Una breve descripción sobre las contribuciones y especialidad del desarrollador en el proyecto.</p>
+                </div>
+
+                <div class="dev-card">
+                    <div class="dev-image-container">
+                        <img src="../img/desarrollador4.jpg" alt="Desarrollador 4">
+                    </div>
+                    <h3 class="dev-name">Nombre del integrante</h3>
+                    <p class="dev-description">Una breve descripción sobre las contribuciones y especialidad del desarrollador en el proyecto.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="main-footer" id="main-footer">
+            <div class="footer-container" id="footer-container">
+                <p>&copy; Restaurante. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JS de Bootstrap y Scripts del proyecto -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/desarrolladores.js"></script>
 </body>
 </html>

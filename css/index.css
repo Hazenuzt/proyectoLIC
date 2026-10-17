@@ -1,56 +1,52 @@
-/* ===================================================
-   HOJA DE ESTILOS PARA INDEX (INICIO)
-   =================================================== */
-
 .index-page {
-    background-color: var(--colo-fondo-general);
-    margin: 0;
-    padding: 0;
+    background-color: var(--color-fondo-general);
 }
-
-/* Layout principal para el sidebar */
+ 
 .index-layout-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     min-height: 100vh;
 }
-
+ 
 .header-brand img {
     height: 40px;
     width: auto;
 }
-
+ 
 /* ===================================================
-   1. NAVEGACIÓN LATERAL (SIDEBAR)
+   1. MENÚ LATERAL MÓVIL 
    =================================================== */
 .sidebar-navigation {
-    background-color: var(--color-fondo-alt);
-    display: flex;
-    flex-direction: column;
-    z-index: 101;
-    width: 280px;
-    min-width: 280px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    overflow-y: auto;
+    --bs-offcanvas-width: 260px;
+    --bs-offcanvas-bg: var(--color-fondo-alt);
+    --bs-offcanvas-color: var(--color-texto-secundario);
 }
-
+ 
 .sidebar-navigation .logo-container {
     background-color: var(--color-secundario);
     padding: 15px 20px;
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
-
-.sidebar-nav {
+ 
+.sidebar-navigation .logo-container img {
     display: block;
+    max-width: 120px;
+    height: auto;
+}
+ 
+.sidebar-navigation .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+ 
+.sidebar-nav {
     width: 100%;
     flex-grow: 1;
 }
-
+ 
 .nav-list-sidebar {
     list-style: none;
     padding: 0;
@@ -58,97 +54,86 @@
     display: flex;
     flex-direction: column;
 }
-
+ 
 .nav-list-sidebar .nav-item {
     width: 100%;
     margin: 0;
 }
-
+ 
 .nav-list-sidebar .nav-link {
     display: flex;
     align-items: center;
     padding: 16px 22px;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--color-texto-secundario);
     border-bottom: none;
-    text-decoration: none;
     transition: background-color 0.2s ease, padding-left 0.2s ease;
 }
-
-.nav-list-sidebar .nav-link .glyphicon {
-    font-size: clamp(1.4rem, 1.6vw, 1.7rem);
+ 
+.nav-list-sidebar .nav-link .bi {
+    font-size: 1.4rem;
     margin-right: 15px;
     color: var(--color-primario);
 }
-
+ 
 .nav-list-sidebar .nav-link.active,
 .nav-list-sidebar .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.4);
     border-left: 6px solid var(--color-primario);
     color: var(--color-primario);
-    padding-left: 26px;
+    padding-left: 16px; /* compensa el borde de 6px para que no se mueva el contenido */
 }
-
+ 
 .user-profile-desktop {
     background-color: var(--color-secundario);
     padding: 18px 22px;
     display: flex;
     align-items: center;
-    font-size: clamp(1.15rem, 1.3vw, 1.35rem);
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--color-texto);
     margin-top: auto;
 }
-
-.user-profile-desktop .glyphicon {
-    font-size: clamp(1.6rem, 1.8vw, 2rem);
+ 
+.user-profile-desktop .bi {
+    font-size: 1.6rem;
     background-color: var(--color-fondo-alt);
-    padding: 8px;
+    padding: 4px 8px;
     border-radius: 50%;
     margin-right: 14px;
 }
-
-/* ===================================================
-   2. CONTROLES DE APERTURA / CIERRE (Checkbox y logos)
-   =================================================== */
-.sidebar-checkbox {
-    position: fixed;
-    top: -100px;
-    left: -100px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.brand-toggle {
-    display: block;
-    margin: 0;
+ 
+/* Botón (logo) que abre el menú en móvil */
+.menu-toggle {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    padding: 4px;
+    border: 0;
+    background: transparent;
     cursor: pointer;
+    z-index: 10;
 }
-
-.brand-toggle img {
+ 
+.menu-toggle img {
     display: block;
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    margin: 0 auto;
+    height: 26px;
+    width: auto;
+    filter: brightness(0) invert(1);
 }
-
-.brand-toggle-open {
-    display: none;
-}
-
+ 
 /* ===================================================
-   3. CONTENEDOR HERO Y SECCIONES
+   2. HERO Y SECCIONES
    =================================================== */
 .main-content-home {
     flex: 1;
     min-width: 0;
-    background-color: var(--colo-fondo-general);
+    background-color: var(--color-fondo-general);
     display: flex;
     flex-direction: column;
 }
-
+ 
 .hero-section {
     position: relative;
     min-height: 70vh;
@@ -159,52 +144,51 @@
     align-items: center;
     padding: 0 var(--spacing-lg);
 }
-
+ 
 .hero-title {
     color: #ffffff;
     font-size: 2.5rem;
 }
-
+ 
 .hero-description {
     color: var(--color-fondo-general);
     font-size: 1.2rem;
     margin-top: var(--spacing-md);
 }
-
-/* Highlights */
+ 
 .highlights-section {
     padding: var(--spacing-xl) var(--spacing-lg);
     text-align: center;
 }
-
+ 
 .section-title {
     color: var(--color-primario);
     margin-bottom: var(--spacing-lg);
 }
-
+ 
 .highlights-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
 }
-
+ 
 .highlight-card img {
     width: 100%;
     height: 120px;
     border-radius: 8px;
     object-fit: cover;
 }
-
+ 
 .highlight-card h3 {
     margin-top: var(--spacing-xs);
     font-size: 1rem;
 }
-
+ 
 .highlight-card p {
     font-size: 0.8rem;
-    color: var(--color-text);
+    color: var(--color-texto);
 }
-
+ 
 .main-footer {
     width: 100%;
     background-color: var(--color-secundario);
@@ -212,138 +196,27 @@
     text-align: center;
     margin-top: auto;
 }
-
-/* Ocultar completamente el checkbox fuera de la pantalla */
-.sidebar-checkbox {
-    position: fixed;
-    top: -9999px;
-    left: -9999px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Por defecto, el menú lateral se mantiene oculto */
-.sidebar-navigation {
-    display: none;
-}
-
-/* Botón de apertura oculto por defecto */
-.brand-toggle-open {
-    display: none;
-}
-
-/* ===================================================
-   PANTALLAS GRANDES (Escritorio >= 768px)
-   =================================================== */
-@media (min-width: 768px) {
-    .main-header {
-        display: flex;
-    }
-
-    .sidebar-navigation {
-        display: none;
-    }
-
-    .index-layout-wrapper {
-        flex-direction: column;
-    }
-
-    .brand-toggle-open {
-        display: none;
-    }
-}
-
+ 
 /* ===================================================
    MÓVILES Y TABLETS (< 768px)
    =================================================== */
 @media (max-width: 767px) {
-    /* Ocultar la barra superior de escritorio */
+    /* La barra superior de escritorio se oculta; se usa el offcanvas */
     .main-header {
-        display: none !important;
+        display: none;
     }
-
-    /* Contenedor principal relacional */
-    .index-layout-wrapper {
-        display: block;
-        width: 100%;
-        min-height: 100vh;
-        position: relative;
-        overflow-x: hidden;
-    }
-
-    /* Menú lateral fijo que ocupa exactamente el 100% de la altura de la pantalla */
-    .sidebar-navigation {
-        display: flex !important;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 130px;
-        min-width: 130px;
-        height: 100vh;
-        z-index: 101;
-        background-color: var(--color-fondo-alt);
-        overflow-x: hidden;
-        transition: transform 0.25s ease, width 0.25s ease;
-    }
-
-    /* Ocultar el menú lateral al marcar el checkbox */
-    #sidebar-toggle:checked ~ .index-layout-wrapper .sidebar-navigation {
-        transform: translateX(-130px);
-        width: 0;
-        min-width: 0;
-        visibility: hidden;
-    }
-
-    /* Contenido principal con margen izquierdo para no quedar detrás del menú fijo */
-    .main-content-home {
-        width: 100%;
-        margin-left: 130px;
-        transition: margin-left 0.25s ease;
-    }
-
-    /* Cuando el menú se cierra, el contenido ocupa todo el ancho */
-    #sidebar-toggle:checked ~ .index-layout-wrapper .main-content-home {
-        margin-left: 0;
-    }
-
-    /* Hacer que la navegación intermedia crezca y empuje al usuario al fondo */
-    .sidebar-navigation .sidebar-nav {
-        flex-grow: 1;
-    }
-
-    /* Anclar el bloque de usuario permanentemente al fondo */
-    .sidebar-navigation .user-profile-desktop {
-        margin-top: auto !important;
-        width: 100%;
-        background-color: var(--color-secundario);
-        display: flex;
-        align-items: center;
-        padding: 15px 12px;
-    }
-
+ 
     .hero-section {
-        position: relative;
-        padding-left: 45px; /* Espacio para el botón de reapertura */
-    }
-
-    /* Mostrar el logo para reabrir el menú cuando está contraído */
-    #sidebar-toggle:checked ~ .index-layout-wrapper .main-content-home .brand-toggle-open {
-        display: block !important;
-        position: absolute;
-        left: 10px;
-        top: 20px;
-        margin: 0;
-        padding: 4px;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    .brand-toggle-open img {
-        display: block;
-        height: 26px;
-        width: auto;
-        filter: brightness(0) invert(1);
+        padding-left: 45px; /* espacio para el botón que abre el menú */
     }
 }
+ 
+/* ===================================================
+   ESCRITORIO (>= 768px)
+   =================================================== */
+@media (min-width: 768px) {
+    .highlights-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+ 
