@@ -119,10 +119,6 @@
     margin-right: 14px;
 }
 
-.sidebar-navigation .user-profile-desktop {
-    margin-top: auto;
-}
-
 /* ===================================================
    2. CONTENIDO PRINCIPAL, TARJETAS Y FORMULARIOS
    =================================================== */
@@ -449,136 +445,161 @@
 
 
 /*Nuevo codigo */
+/* Checkbox oculto fuera de la pantalla para que no genere espacios */
+.sidebar-checkbox {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    opacity: 0;
+    pointer-events: none;
+}
 
-/* CONTENEDOR PRINCIPAL */
+/* Contenedor principal de reservas */
 .booking-layout-wrapper {
     display: flex;
     flex-direction: row;
     width: 100%;
-    min-height: calc(100vh - var(--header-height, 70px));
+    min-height: 100vh;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
 }
 
-/* CONTENIDO DE RESERVAS */
+/* Contenido principal */
 .booking-layout-wrapper .main-content-booking {
     flex: 1;
     min-width: 0;
-    width: calc(100% - 280px);
+    margin: 0;
 }
 
-/* CHECKBOX PARA CONTROLAR EL MENÚ */
-.booking-layout-wrapper .sidebar-checkbox {
-    display: none;
-}
-
-/* BOTONES PARA ABRIR Y CERRAR EL MENÚ */
+/* Botones para abrir y cerrar el menú */
 .booking-page .brand-toggle,
 .booking-page .brand-toggle-open {
     cursor: pointer;
+}
+
+.brand-toggle-open {
+    display: none;
 }
 
 /* ================================================
    ESCRITORIO: 768px EN ADELANTE
    ================================================ */
 @media (min-width: 768px) {
-
-    /* Mostrar la barra de navegación superior */
     .booking-page .main-header {
         display: flex;
     }
 
-    /* Ocultar el menú lateral en escritorio */
     .booking-page .sidebar-navigation {
-        display: none;
+        display: none !important;
     }
 
-    /* El contenido utiliza todo el ancho */
+    .booking-layout-wrapper {
+        flex-direction: column;
+    }
+
     .booking-layout-wrapper .main-content-booking {
         width: 100%;
     }
 
-    /* Ocultar el botón para reabrir el menú */
     .booking-page .brand-toggle-open {
-        display: none;
+        display: none !important;
     }
 }
 
 /* ================================================
-   MÓVILES: MENOS DE 768px
+   MÓVILES Y TABLETS: MENOS DE 768px
    ================================================ */
 @media (max-width: 767px) {
-
-    /* Ocultar la barra superior */
+    /* Ocultar barra superior de escritorio */
     .booking-page .main-header {
-        display: none;
+        display: none !important;
     }
 
-    /* Mantener el menú y el contenido en una fila */
     .booking-layout-wrapper {
         display: flex;
         flex-direction: row;
+        align-items: flex-start;
         width: 100%;
         min-height: 100vh;
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
     }
 
-    /* Menú lateral compacto, como en menu.css */
+    /* Menú lateral compacto y fijo al tope */
     .booking-layout-wrapper .sidebar-navigation {
         display: flex;
         flex-direction: column;
-        position: relative;
-        top: auto;
-        align-self: flex-start;
-        width: 130px;
-        min-width: 110px;
+        position: sticky;
+        top: 0;
+        width: 140px;
+        min-width: 140px;
         min-height: 100vh;
-        height: auto;
+        height: 100vh;
         flex-shrink: 0;
-        overflow: hidden;
-        transition: width 0.3s ease, min-width 0.3s ease;
+        overflow-x: hidden;
+        margin: 0;
+        transition: width 0.3s ease, min-width 0.3s ease, visibility 0s linear 0s;
+        z-index: 101;
+        background-color: var(--color-fondo-alt);
     }
 
-    /* Contraer el menú al marcar el checkbox */
-    #sidebar-toggle:checked
-    ~ .booking-layout-wrapper .sidebar-navigation {
-        width: 0;
-        min-width: 0;
+    /* Forzar que el bloque de usuario del sidebar se mantenga siempre abajo */
+    .sidebar-navigation .user-profile-desktop {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        background-color: var(--color-secundario);
+        padding: 15px 12px;
+        color: var(--color-texto);
+        font-weight: 600;
+    }
+
+    /* Contraer el menú lateral al marcar el checkbox */
+    #sidebar-toggle:checked ~ .sidebar-navigation {
+        width: 0 !important;
+        min-width: 0 !important;
         visibility: hidden;
-        overflow: hidden;
-    } 
+        transition: width 0.3s ease, min-width 0.3s ease, visibility 0s linear 0.3s;
+    }
 
-   /*#sidebar-toggle:checked ~ .sidebar-navigation {
-    width: 0 ;
-    min-width: 0;
-    visibility: hidden;
-}*/
-
-    /* Ajustar el contenido principal */
+    /* Ajustar contenido principal */
     .booking-layout-wrapper .main-content-booking {
         flex: 1;
         min-width: 0;
         width: 100%;
+        margin: 0;
     }
 
-    /* Mostrar el botón para cerrar el menú */
-    .booking-page .brand-toggle {
+    /* Banner superior sin márgenes que generen espacios */
+    .booking-banner-header {
+        position: relative;
+        margin: 0;
+        padding: 18px 20px 18px 45px;
+    }
+
+    .booking-banner-header .section-title {
+        margin: 0;
+    }
+
+    /* Mostrar botón de reapertura cuando el menú esté contraído */
+    #sidebar-toggle:checked ~ .booking-layout-wrapper .main-content-booking .brand-toggle-open {
+        display: block !important;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 4px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .brand-toggle-open img {
         display: block;
+        height: 26px;
+        width: auto;
+        filter: brightness(0) invert(1);
     }
-
-    /* Ocultar el botón de reapertura inicialmente */
-    .booking-page .brand-toggle-open {
-        display: none;
-    }
-
-    /* Mostrar el botón de reapertura cuando el menú esté cerrado */
-  #sidebar-toggle:checked ~ .booking-layout-wrapper .main-content-booking .brand-toggle-open {
-    display: block;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 4px;
-    cursor: pointer;
-    z-index: 10;
-}
 }
