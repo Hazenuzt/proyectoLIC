@@ -14,7 +14,9 @@
     <!-- NAV BAR PRINCIPAL (Compartida en todos los documentos) -->
     <header class="main-header" id="main-header">
         <div class="logo-container" id="logo-container">
-            <h1 class="brand-title" id="brand-title">terra</h1>
+           <a href="index.html">
+                <img src="img/logo.png" alt="Terra">
+            </a>
         </div>
         <div class="user-icon" id="user-icon">
             <img src="img/logo.png" alt="Icono de usuario">
@@ -30,6 +32,72 @@
             </ul>
         </nav>
     </header>
+
+
+    
+    <!-- CHECKBOX OCULTO PARA CONTROLAR EL MENÚ LATERAL MÓVIL -->
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-checkbox">
+
+    <!-- WRAPPER GENERAL PARA MÓVIL Y TABLET -->
+    <div class="index-layout-wrapper">
+
+        <!-- SIDEBAR / NAVEGACIÓN LATERAL -->
+        <aside class="sidebar-navigation" id="sidebar">
+            <div class="logo-container">
+                <label for="sidebar-toggle" class="brand-toggle" title="Ocultar menú">
+                    <img src="img/logo.png" alt="Terra">
+                </label>  
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list-sidebar">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <span class="glyphicon glyphicon-home"></span>
+                            <span class="link-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="html/menu.html" class="nav-link">
+                            <span class="glyphicon glyphicon-cutlery"></span>
+                            <span class="link-text">Menú</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="html/galeria.html" class="nav-link">
+                            <span class="glyphicon glyphicon-picture"></span>
+                            <span class="link-text">Galería</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="html/reservas.html" class="nav-link">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="link-text">Pedido</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="html/contactos.html" class="nav-link">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            <span class="link-text">Contacto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="html/desarrolladores.html" class="nav-link">
+                            <span class="glyphicon glyphicon-code"></span>
+                            <span class="link-text">Coders</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="user-profile-desktop">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="user-name">Usuario</span>
+            </div>
+        </aside>
+
+
+    
 
     <!-- CONTENIDO PRINCIPAL: INTRODUCCIÓN Y PRESENTACIÓN -->
     <main class="main-content" id="main-content-home">
@@ -54,22 +122,13 @@
             </div>
         </section>
         
-    </main>
-
     <!-- PIE DE PÁGINA PRINCIPAL -->
     <footer class="main-footer" id="main-footer">
         <div class="footer-container" id="footer-container">
             <p>&copy; Restaurante. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!--NavBar-->
-    <nav class="bottom-nav" id="bottom-nav">
-    <a href="index.html" class="nav-link active">Inicio</a>
-    <a href="html/menu.html" class="nav-link">Menú</a>
-    <a href="html/reservas.html" class="nav-link">Pedido</a>
-    <a href="html/contactos.html" class="nav-link">Contacto</a>
-</nav>
+    </main>
 
     <script src="js/main.js"></script>
 </body>
