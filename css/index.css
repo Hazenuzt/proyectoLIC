@@ -213,27 +213,39 @@
     margin-top: auto;
 }
 
-/* ===================================================
-   4. MEDIA QUERIES RESPONSIVOS
-   =================================================== */
+/* Ocultar completamente el checkbox fuera de la pantalla */
+.sidebar-checkbox {
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
 
-/* Pantallas grandes (Escritorio >= 768px) */
+/* Por defecto, el menú lateral se mantiene oculto */
+.sidebar-navigation {
+    display: none;
+}
+
+/* Botón de apertura oculto por defecto */
+.brand-toggle-open {
+    display: none;
+}
+
+/* ===================================================
+   PANTALLAS GRANDES (Escritorio >= 768px)
+   =================================================== */
 @media (min-width: 768px) {
+    .main-header {
+        display: flex !important;
+    }
+
     .sidebar-navigation {
         display: none !important;
     }
 
     .index-layout-wrapper {
-        min-height: calc(100vh - var(--header-height));
         flex-direction: column;
-    }
-
-    .hero-title {
-        font-size: 3.5rem;
-    }
-
-    .highlights-container {
-        grid-template-columns: repeat(3, 1fr);
     }
 
     .brand-toggle-open {
@@ -241,12 +253,16 @@
     }
 }
 
-/* Pantallas pequeñas (Móvil y Tablet < 768px) */
+/* ===================================================
+   MÓVILES Y TABLETS (< 768px)
+   =================================================== */
 @media (max-width: 767px) {
-    .index-page .main-header {
+    /* Ocultar la barra superior de escritorio */
+    .main-header {
         display: none !important;
     }
 
+    /* Mostrar el contenedor en fila */
     .index-layout-wrapper {
         display: flex;
         flex-direction: row;
@@ -256,16 +272,23 @@
         overflow-x: hidden;
     }
 
+    /* Mostrar el menú lateral correctamente */
     .sidebar-navigation {
+        display: flex !important;
+        flex-direction: column;
         width: 130px;
         min-width: 130px;
         height: 100vh;
+        position: sticky;
+        top: 0;
         overflow-x: hidden;
         white-space: nowrap;
         transition: width 0.25s ease, min-width 0.25s ease, visibility 0s linear 0s;
+        z-index: 101;
+        background-color: var(--color-fondo-alt);
     }
 
-    /* Contraer sidebar al marcar el checkbox */
+    /* Contraer el menú lateral al marcar el checkbox */
     #sidebar-toggle:checked ~ .index-layout-wrapper .sidebar-navigation {
         width: 0 !important;
         min-width: 0 !important;
@@ -281,10 +304,10 @@
 
     .hero-section {
         position: relative;
-        padding-left: 45px; 
+        padding-left: 45px; /* Espacio para que el logo flotante no tape el texto */
     }
 
-    /* Mostrar el logo en el hero cuando el menú lateral está oculto */
+    /* Mostrar el logo para reabrir el menú cuando está contraído */
     #sidebar-toggle:checked ~ .index-layout-wrapper .main-content-home .brand-toggle-open {
         display: block !important;
         position: absolute;
@@ -301,11 +324,5 @@
         height: 26px;
         width: auto;
         filter: brightness(0) invert(1);
-    }
-}
-
-@media (max-width: 480px) {
-    .highlights-container {
-        grid-template-columns: 1fr;
     }
 }
