@@ -119,6 +119,10 @@
     margin-right: 14px;
 }
 
+.sidebar-navigation .user-profile-desktop {
+    margin-top: auto;
+}
+
 /* ===================================================
    2. CONTENIDO PRINCIPAL, TARJETAS Y FORMULARIOS
    =================================================== */
