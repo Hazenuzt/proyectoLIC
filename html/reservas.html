@@ -12,7 +12,7 @@
 
     <div class="booking-layout-wrapper">
             
-        <!-- SIDEBAR / NAVEGACIÓN LATERAL (Mismo estándar) -->
+        <!-- SIDEBAR -->
         <aside class="sidebar-navigation" id="main-header">
             <div class="logo-container" id="logo-container">
                 <h1 class="brand-title" id="brand-title">terra</h1>
@@ -58,27 +58,19 @@
 
             <div class="user-profile-desktop hidden-xs hidden-sm">
                 <span class="glyphicon glyphicon-user"></span>
-                <span class="user-name">Usuario</span>
+                <span class="user-name" id="sidebar-username">Usuario</span>
             </div>
         </aside>
 
-        <!-- NAVEGACIÓN INFERIOR PARA MÓVILES (Mismo estándar) -->
+        <!-- NAVEGACIÓN MÓVIL -->
         <nav class="bottom-nav hidden-md hidden-lg" id="bottom-nav">
-            <a href="../index.html" class="nav-link">
-                <span class="glyphicon glyphicon-home"></span><br>Inicio
-            </a>
-            <a href="menu.html" class="nav-link">
-                <span class="glyphicon glyphicon-cutlery"></span><br>Menú
-            </a>
-            <a href="reservas.html" class="nav-link active">
-                <span class="glyphicon glyphicon-shopping-cart"></span><br>Pedido
-            </a>
-            <a href="contactos.html" class="nav-link">
-                <span class="glyphicon glyphicon-comment"></span><br>Contacto
-            </a>
+            <a href="../index.html" class="nav-link"><span class="glyphicon glyphicon-home"></span><br>Inicio</a>
+            <a href="menu.html" class="nav-link"><span class="glyphicon glyphicon-cutlery"></span><br>Menú</a>
+            <a href="reservas.html" class="nav-link active"><span class="glyphicon glyphicon-shopping-cart"></span><br>Pedido</a>
+            <a href="contactos.html" class="nav-link"><span class="glyphicon glyphicon-comment"></span><br>Contacto</a>
         </nav>
 
-        <!-- CONTENIDO PRINCIPAL DE RESERVAS Y PEDIDOS -->
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="main-content-booking" id="main-content-booking">
             
             <header class="booking-banner-header">
@@ -87,25 +79,31 @@
 
             <section class="booking-section" id="booking-section">
                 
-                <!-- BLOQUE DE BIENVENIDA DE USUARIO -->
+                <!-- BIENVENIDA -->
                 <div class="welcome-card">
-                    <h4 class="welcome-user">Usuario</h4>
-                    <p class="welcome-message">¡Hola Usuario! , Que gusto poder atenderte hoy</p>
+                    <h4 class="welcome-user" id="welcome-user-title">Usuario</h4>
+                    <p class="welcome-message">¡Hola <span id="user-greeting-name">Usuario</span>! Qué gusto poder atenderte hoy</p>
                 </div>
 
                 <div class="booking-forms-grid">
 
-                    <!-- CARD 1: ORDENA AQUÍ -->
+                    <!-- CARD 1: ORDENA AQUÍ (Menú con API TheMealDB) -->
                     <div class="form-card">
                         <h3 class="card-title">Ordena Aquí</h3>
+                        
+                        <!-- Navbar de Categorías para el Menú -->
+                        <div id="meal-categories-nav" class="meal-categories-bar" style="margin-bottom: 15px; display: flex; gap: 5px; overflow-x: auto; padding-bottom: 5px;">
+                            <!-- Se inyectará dinámicamente con JS desde TheMealDB -->
+                        </div>
+
                         <form id="order-form" class="custom-form">
                             <div class="form-row">
-                                <label for="order-dish">Platillos:</label>
+                                <label for="order-dish">Platillos del Menú:</label>
                                 <div class="input-with-btn">
                                     <select id="order-dish" class="form-control">
-                                        <option value="">-- Seleccionar --</option>
+                                        <option value="">-- Selecciona categoría primero --</option>
                                     </select>
-                                    <button type="button" class="btn-add">+</button>
+                                    <button type="button" class="btn-add" id="btn-add-dish">+</button>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -113,33 +111,19 @@
                                 <input type="number" id="dish-qty" class="form-control" min="1" value="1">
                             </div>
 
-                            <div class="form-row">
-                                <label for="order-drink">Bebidas:</label>
-                                <div class="input-with-btn">
-                                    <select id="order-drink" class="form-control">
-                                        <option value="">-- Seleccionar --</option>
-                                    </select>
-                                    <button type="button" class="btn-add">+</button>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <label for="drink-qty">Cantidad</label>
-                                <input type="number" id="drink-qty" class="form-control" min="1" value="1">
-                            </div>
-
                             <div class="form-action">
-                                <button type="submit" class="btn-custom">Confirmar Orden</button>
+                                <button type="submit" class="btn-custom">Agregar a la Orden</button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- CARD 2: RESERVA TU MESA -->
+                    <!-- CARD 2: RESERVA TU MESA (Estilo Cine) -->
                     <div class="form-card">
                         <h3 class="card-title">Reserva tu Mesa</h3>
                         <form id="reservation-form" class="custom-form">
                             <div class="form-row">
-                                <label for="res-date">Fecha :</label>
-                                <input type="date" id="res-date" class="form-control" placeholder="DD/MM/AAAA" required>
+                                <label for="res-date">Fecha:</label>
+                                <input type="date" id="res-date" class="form-control" required>
                             </div>
 
                             <div class="form-row">
@@ -148,12 +132,7 @@
                             </div>
 
                             <div class="form-row">
-                                <label for="res-guests">Numero de personas:</label>
-                                <input type="number" id="res-guests" class="form-control" min="1" max="15" required>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="res-zone">Seccion/Zona de mesa:</label>
+                                <label for="res-zone">Sección/Zona de mesa:</label>
                                 <select id="res-zone" class="form-control" required>
                                     <option value="">-- Seleccionar Zona --</option>
                                     <option value="interior">Interior</option>
@@ -162,8 +141,17 @@
                                 </select>
                             </div>
 
+                            <!-- CONTENEDOR DE LA CUADRÍCULA DE MESAS (Estilo Cine) -->
+                            <div class="form-row">
+                                <label>Selecciona tu Mesa:</label>
+                                <div id="table-grid-container" class="table-grid-cine" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; padding: 10px; background: #f9f9f9; border-radius: 5px;">
+                                    <p class="text-muted" style="grid-column: span 4; text-align: center;">Selecciona una zona y fecha para ver las mesas</p>
+                                </div>
+                                <input type="hidden" id="selected-table-input" required>
+                            </div>
+
                             <div class="form-action">
-                                <button type="submit" class="btn-custom">Confirmar Reserva</button>
+                                <button type="submit" class="btn-custom">Confirmar Reserva de Mesa</button>
                             </div>
                         </form>
                     </div>
@@ -172,33 +160,26 @@
 
                 <!-- SECCIÓN RESUMEN DE LA ORDEN -->
                 <div class="order-summary-block">
-                    <h3 class="summary-title">Resumen de la Orden</h3>
+                    <h3 class="summary-title">Resumen General</h3>
                     
                     <div class="summary-table-wrapper">
                         <table class="summary-table">
                             <thead>
                                 <tr>
+                                    <th>Tipo / Detalle</th>
                                     <th>Nombre</th>
                                     <th>Cantidad</th>
-                                    <th>Precio</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody id="summary-items">
-                                <tr>
-                                    <td>Lorem</td>
-                                    <td>2</td>
-                                    <td>$00.00</td>
-                                </tr>
+                                <!-- Dinámico con JS -->
                             </tbody>
                         </table>
                     </div>
 
                     <div class="summary-footer">
-                        <div class="total-box">
-                            <span>Total:</span>
-                            <span class="total-amount">$00.00</span>
-                        </div>
-                        <button type="button" class="btn-custom btn-pay">Pagar</button>
+                        <button type="button" class="btn-custom btn-pay" id="btn-confirm-all">Finalizar y Guardar Pedido</button>
                     </div>
                 </div>
 
@@ -210,7 +191,6 @@
                 </div>
             </footer>
         </main>
-
     </div>
 
     <script src="../js/main.js"></script>
