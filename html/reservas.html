@@ -13,15 +13,15 @@
     <div class="booking-layout-wrapper">
             
         <!-- SIDEBAR -->
-        <aside class="sidebar-navigation" id="main-header">
-            <div class="logo-container" id="logo-container">
-                <h1 class="brand-title" id="brand-title">terra</h1>
+        <aside class="sidebar-navigation" id="main-header" style="width: 260px; background-color: var(--color-fondo-alt); display: flex; flex-direction: column; min-height: 100vh; position: sticky; top: 0;">
+            <div class="logo-container" id="logo-container" style="display: flex; background-color: var(--color-secundario); padding: 15px 20px; justify-content: space-between; align-items: center;">
+                <h1 class="brand-title" id="brand-title" style="margin: 0; font-size: 1.8rem;">terra</h1>
                 <div class="user-avatar-mobile hidden-md hidden-lg">
                     <span class="glyphicon glyphicon-user"></span>
                 </div>
             </div>
 
-            <nav class="sidebar-nav">
+            <nav class="sidebar-nav" style="flex-grow: 1;">
                 <ul class="nav-list-sidebar">
                     <li class="nav-item">
                         <a href="../index.html" class="nav-link">
@@ -181,8 +181,6 @@
 
                 <!-- SECCIÓN RESUMEN Y BOTÓN UNIFICADO -->
                 <div class="order-summary-block">
-                    
-                    
                     <div class="summary-footer" style="text-align: center; margin-top: 20px;">
                         <button type="button" class="btn-custom btn-pay" id="btn-confirm-all" style="padding: 12px 30px; font-size: 16px;">Finalizar y Guardar Pedido y Reserva</button>
                     </div>
