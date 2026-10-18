@@ -109,6 +109,9 @@
             <section class="menu-section" id="menu-section">
                 <div class="menu-grid-container" id="menu-grid-container">
 
+                    <!--espacio para mensaje de error-->
+                    <div id="menu-mensaje"></div>
+
                     <!-- Botones de pestaña -->
                     <div class="menu-tabs">
                         <button type="button" class="menu-tab-btn active" data-target="panel-fuertes">Platillos fuertes</button>
@@ -117,65 +120,26 @@
                     </div>
                     
                     <!-- Panel de Platillos Fuertes -->
-                    <div class="category-block panel-fuertes" id="panel-fuertes">
+                    <div class="category-block panel-fuertes active" id="panel-fuertes">
                         <h3 class="category-title">Platillos Fuertes</h3>
-                        <div class="row g-4">
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Platillo" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
+                        <div class="row g-4" id="grid-fuertes">
+                            <!--aqui irá la inserción de contenido almacenado en api rest-->
                         </div>
                     </div>
 
                     <!-- Panel de Postres -->
                     <div class="category-block panel-postres" id="panel-postres">
                         <h3 class="category-title">Postres</h3>
-                        <div class="row g-4">
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Postre" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Postre" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
+                        <div class="row g-4" id="grid-postres">
+                            <!--aqui irá la inserción de contenido almacenado en api rest-->
                         </div>
                     </div>
 
                     <!-- Panel de Bebidas -->
                     <div class="category-block panel-bebidas" id="panel-bebidas">
                         <h3 class="category-title">Bebidas</h3>
-                        <div class="row g-4">
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Bebidas" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
-                            <div class="col-6 col-md-4 dish-card">
-                                <img src="https://placehold.co/400x300" alt="Bebidas" class="img-fluid mx-auto d-block">
-                                <h4 class="dish-title">Lorem Ipsum</h4>
-                                <p class="dish-desc d-none d-md-block">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                                <span class="dish-price">$00.00</span>
-                            </div>
+                        <div class="row g-4" id="grid-bebidas">
+                            <!--aqui irá la inserción de contenido almacenado en api rest-->
                         </div>
                     </div>
 
