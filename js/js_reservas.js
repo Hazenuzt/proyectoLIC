@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMealsData = [];
     let pedidoCarrito = []; 
 
+    const URLmenu = "https://6ad4090359dd78397bbc3aae.mockapi.io/terra/menu";
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioLogueado')) || { id: 1, usuario: 'ClienteInvitado' };
     
     const userGreetingName = document.getElementById('user-greeting-name');
@@ -18,72 +19,84 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userGreetingName) userGreetingName.textContent = usuarioActivo.usuario;
     if (sidebarUsername) sidebarUsername.textContent = usuarioActivo.usuario;
 
-    // 1. Cargar categorías de TheMealDB
-    if (categoriesNav) {
-        fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.categories) {
-                    categoriesNav.innerHTML = '';
-                    data.categories.forEach(cat => {
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.className = 'btn btn-default btn-xs';
-                        btn.textContent = cat.strCategory;
-                        btn.style.borderRadius = '15px';
-                        btn.style.padding = '5px 12px';
-                        btn.style.fontSize = '12px';
-                        btn.style.margin = '2px';
-                        
-                        btn.addEventListener('click', () => {
-                            document.querySelectorAll('#meal-categories-nav button').forEach(b => {
-                                b.classList.remove('btn-primary');
-                                b.classList.add('btn-default');
-                            });
-                            btn.classList.remove('btn-default');
-                            btn.classList.add('btn-primary');
-                            
-                            loadMealsByCategory(cat.strCategory);
-                        });
-                        
-                        categoriesNav.appendChild(btn);
-                    });
-                }
-            })
-            .catch(error => console.error('Error al cargar categorías:', error));
-    }
-
-    function loadMealsByCategory(categoryName) {
+    // 1. Cargar el menú completo desde MockAPI y extraer categorías dinámicamente
+    function loadMenuFromMockApi() {
         if (!orderDishSelect) return;
         orderDishSelect.innerHTML = '<option value="">Cargando platillos...</option>';
+
+        fetch(URLmenu)
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    currentMealsData = data; 
+                    
+                    const categoriasUnicas = [...new Set(data.map(item => item.categoria))];
+                    
+                    if (categoriesNav) {
+                        categoriesNav.innerHTML = '';
+                        categoriasUnicas.forEach(cat => {
+                            const btn = document.createElement('button');
+                            btn.type = 'button';
+                            btn.className = 'btn btn-default btn-xs';
+                            btn.textContent = cat;
+                            btn.style.borderRadius = '15px';
+                            btn.style.padding = '5px 12px';
+                            btn.style.fontSize = '12px';
+                            btn.style.margin = '2px';
+                            
+                            btn.addEventListener('click', () => {
+                                document.querySelectorAll('#meal-categories-nav button').forEach(b => {
+                                    b.classList.remove('btn-primary');
+                                    b.classList.add('btn-default');
+                                });
+                                btn.classList.remove('btn-default');
+                                btn.classList.add('btn-primary');
+                                
+                                renderDishesByCategory(cat);
+                            });
+                            
+                            categoriesNav.appendChild(btn);
+                        });
+                    }
+
+                    if (categoriasUnicas.length > 0) {
+                        renderDishesByCategory(categoriasUnicas[0]);
+                        if (categoriesNav.firstChild) {
+                            categoriesNav.firstChild.classList.remove('btn-default');
+                            categoriesNav.firstChild.classList.add('btn-primary');
+                        }
+                    }
+                } else {
+                    orderDishSelect.innerHTML = '<option value="">No hay platillos disponibles</option>';
+                }
+            })
+            .catch(error => {
+                console.error('Error al conectar con MockAPI:', error);
+                orderDishSelect.innerHTML = '<option value="">Error al cargar el menú</option>';
+            });
+    }
+
+    function renderDishesByCategory(categoriaNombre) {
+        if (!orderDishSelect) return;
+        orderDishSelect.innerHTML = '<option value="">-- Selecciona un platillo --</option>';
         
         const previewContainer = document.getElementById('dish-preview-container');
         const placeholder = document.getElementById('dish-placeholder');
         if (previewContainer) previewContainer.style.display = 'none';
         if (placeholder) placeholder.style.display = 'flex';
 
-        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`)
-            .then(response => response.json())
-            .then(data => {
-                orderDishSelect.innerHTML = '<option value="">-- Selecciona un platillo --</option>';
-                currentMealsData = [];
-                
-                if (data.meals) {
-                    currentMealsData = data.meals;
-                    data.meals.forEach(meal => {
-                        const option = document.createElement('option');
-                        option.value = meal.strMeal;
-                        option.textContent = meal.strMeal;
-                        orderDishSelect.appendChild(option);
-                    });
-                } else {
-                    orderDishSelect.innerHTML = '<option value="">No hay platillos en esta categoría</option>';
-                }
-            })
-            .catch(error => console.error('Error al cargar platillos:', error));
+        const filtrados = currentMealsData.filter(item => item.categoria === categoriaNombre);
+        
+        filtrados.forEach(meal => {
+            const option = document.createElement('option');
+            option.value = meal.nombre;
+            option.textContent = `${meal.nombre} ($${Number(meal.precio).toFixed(2)})`;
+            orderDishSelect.appendChild(option);
+        });
     }
 
-    // Previsualizar imagen grande en la columna izquierda
+    loadMenuFromMockApi();
+
     if (orderDishSelect) {
         orderDishSelect.addEventListener('change', (e) => {
             const selectedMealName = e.target.value;
@@ -97,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const mealFound = currentMealsData.find(m => m.strMeal === selectedMealName);
+            const mealFound = currentMealsData.find(m => m.nombre === selectedMealName);
             if (mealFound && previewContainer && previewImg && placeholder) {
-                previewImg.src = mealFound.strMealThumb;
+                previewImg.src = mealFound.imagen.startsWith('http') ? mealFound.imagen : `../${mealFound.imagen}`;
                 previewContainer.style.display = 'block';
                 placeholder.style.display = 'none';
             }
@@ -118,11 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const mealFound = currentMealsData.find(m => m.strMeal === dishName);
-            const imageThumb = mealFound ? mealFound.strMealThumb : '';
+            const mealFound = currentMealsData.find(m => m.nombre === dishName);
+            const imageThumb = mealFound ? (mealFound.imagen.startsWith('http') ? mealFound.imagen : `../${mealFound.imagen}`) : '';
+            const precioPlato = mealFound ? Number(mealFound.precio) || 0 : 0;
 
             pedidoCarrito.push({
                 nombre: dishName,
+                precio: precioPlato,
                 cantidad: quantity,
                 imagen: imageThumb
             });
@@ -148,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pedidoCarrito.forEach((item, index) => {
             html += `
                 <li class="list-group-item" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; font-size: 12px;">
-                    <span><strong>${item.nombre}</strong> (Cant: ${item.cantidad})</span>
+                    <span><strong>${item.nombre}</strong> (Cant: ${item.cantidad}) - $${(item.precio * item.cantidad).toFixed(2)}</span>
                     <button type="button" class="btn btn-danger btn-xs" onclick="window.eliminarItemCarrito(${index})">&times;</button>
                 </li>
             `;
@@ -211,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resDate.addEventListener('change', renderTableGrid);
     }
 
-    // 4. Renderizar reservas activas con botón de eliminar
+    // 4. Renderizar reservas activas y eliminar liberando la mesa
     function renderUserReservations() {
         const container = document.getElementById('user-active-reservations-list');
         if (!container) return;
@@ -234,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 platillosTexto = `${res.platillo} (x${res.cantidad || 1})`;
             }
 
-            // Usamos un identificador único (idReserva o creamos uno temporal basado en fecha/mesa si no tuviera)
             const idUnico = res.idReserva || (res.fecha + '_' + res.mesa);
 
             html += `
@@ -256,13 +270,27 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = html;
     }
 
-    // Función global para eliminar una reserva del localStorage
     window.eliminarReserva = function(idReserva) {
         if (!confirm('¿Estás seguro de que deseas eliminar esta reserva?')) return;
 
         let historial = JSON.parse(localStorage.getItem('historialReservas')) || [];
         
-        // Filtramos para quitar la reserva seleccionada
+        const reservaAEliminar = historial.find(r => {
+            const currentId = r.idReserva || (r.fecha + '_' + r.mesa);
+            return currentId === idReserva;
+        });
+
+        // Liberar la mesa en el localStorage de ocupadas
+        if (reservaAEliminar && reservaAEliminar.fecha && reservaAEliminar.zona && reservaAEliminar.mesa) {
+            const occupiedKey = `ocupadas_${reservaAEliminar.fecha}_${reservaAEliminar.zona}`;
+            let occupiedTables = JSON.parse(localStorage.getItem(occupiedKey)) || [];
+            
+            const mesaNum = parseInt(reservaAEliminar.mesa);
+            occupiedTables = occupiedTables.filter(t => t !== mesaNum);
+            
+            localStorage.setItem(occupiedKey, JSON.stringify(occupiedTables));
+        }
+
         historial = historial.filter(r => {
             const currentId = r.idReserva || (r.fecha + '_' + r.mesa);
             return currentId !== idReserva;
@@ -270,8 +298,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('historialReservas', JSON.stringify(historial));
         
-        // Volver a renderizar la tabla de reservas en tiempo real
         renderUserReservations();
+        
+        // Refrescar la cuadrícula si está visible en pantalla
+        const resDateInput = document.getElementById('res-date');
+        const resZoneSelect = document.getElementById('res-zone');
+        if (resDateInput && resZoneSelect && resDateInput.value && resZoneSelect.value) {
+            const event = new Event('change');
+            resZoneSelect.dispatchEvent(event);
+        }
     };
 
     renderUserReservations();
