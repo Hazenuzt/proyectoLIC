@@ -1,5 +1,140 @@
-/*contenedor hero de presentación*/
-.hero-section{
+.index-page {
+    background-color: var(--color-fondo-general);
+}
+ 
+.index-layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+ 
+.header-brand img {
+    height: 40px;
+    width: auto;
+}
+ 
+/* ===================================================
+   1. MENÚ LATERAL MÓVIL 
+   =================================================== */
+.sidebar-navigation {
+    --bs-offcanvas-width: 260px;
+    --bs-offcanvas-bg: var(--color-fondo-alt);
+    --bs-offcanvas-color: var(--color-texto-secundario);
+}
+ 
+.sidebar-navigation .logo-container {
+    background-color: var(--color-secundario);
+    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.sidebar-navigation .logo-container img {
+    display: block;
+    max-width: 120px;
+    height: auto;
+}
+ 
+.sidebar-navigation .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+ 
+.sidebar-nav {
+    width: 100%;
+    flex-grow: 1;
+}
+ 
+.nav-list-sidebar {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.nav-list-sidebar .nav-item {
+    width: 100%;
+    margin: 0;
+}
+ 
+.nav-list-sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 16px 22px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+    border-bottom: none;
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+ 
+.nav-list-sidebar .nav-link .bi {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    color: var(--color-primario);
+}
+ 
+.nav-list-sidebar .nav-link.active,
+.nav-list-sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-left: 6px solid var(--color-primario);
+    color: var(--color-primario);
+    padding-left: 16px; /* compensa el borde de 6px para que no se mueva el contenido */
+}
+ 
+.user-profile-desktop {
+    background-color: var(--color-secundario);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-top: auto;
+}
+ 
+.user-profile-desktop .bi {
+    font-size: 1.6rem;
+    background-color: var(--color-fondo-alt);
+    padding: 4px 8px;
+    border-radius: 50%;
+    margin-right: 14px;
+}
+ 
+/* Botón (logo) que abre el menú en móvil */
+.menu-toggle {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    padding: 4px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 10;
+}
+ 
+.menu-toggle img {
+    display: block;
+    height: 26px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+ 
+/* ===================================================
+   2. HERO Y SECCIONES
+   =================================================== */
+.main-content-home {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--color-fondo-general);
+    display: flex;
+    flex-direction: column;
+}
+ 
+.hero-section {
     position: relative;
     min-height: 70vh;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('../img/Picture10.png');
@@ -9,59 +144,79 @@
     align-items: center;
     padding: 0 var(--spacing-lg);
 }
-
-.hero-title{
+ 
+.hero-title {
     color: #ffffff;
     font-size: 2.5rem;
 }
-
-.hero-description{
+ 
+.hero-description {
     color: var(--color-fondo-general);
     font-size: 1.2rem;
     margin-top: var(--spacing-md);
 }
-
-/*highlights*/
-.highlights-section{
+ 
+.highlights-section {
     padding: var(--spacing-xl) var(--spacing-lg);
     text-align: center;
 }
-
-.section-title{
-    color:var(--color-primario);
+ 
+.section-title {
+    color: var(--color-primario);
     margin-bottom: var(--spacing-lg);
 }
-
-.highlights-container{
+ 
+.highlights-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:var(--spacing-md);
+    gap: var(--spacing-md);
 }
-
-.highlight-card img{
+ 
+.highlight-card img {
     width: 100%;
     height: 120px;
     border-radius: 8px;
     object-fit: cover;
 }
-
-.highlight-card h3{
+ 
+.highlight-card h3 {
     margin-top: var(--spacing-xs);
     font-size: 1rem;
 }
-
-.highlight-card p{
+ 
+.highlight-card p {
     font-size: 0.8rem;
-    color: var(--color-text);
+    color: var(--color-texto);
 }
-
-/*resposive*/
+ 
+.main-footer {
+    width: 100%;
+    background-color: var(--color-secundario);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto;
+}
+ 
+/* ===================================================
+   MÓVILES Y TABLETS (< 768px)
+   =================================================== */
+@media (max-width: 767px) {
+    /* La barra superior de escritorio se oculta; se usa el offcanvas */
+    .main-header {
+        display: none;
+    }
+ 
+    .hero-section {
+        padding-left: 45px; /* espacio para el botón que abre el menú */
+    }
+}
+ 
+/* ===================================================
+   ESCRITORIO (>= 768px)
+   =================================================== */
 @media (min-width: 768px) {
-    .hero-title{
-        font-size: 3.5rem;
-    }
-
-    .highlights-container{
-        grid-template-columns: repeat(3, 1fr);
+    .highlights-container {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
+ 
