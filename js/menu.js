@@ -21,7 +21,7 @@ function pedirMenu(){
             //primero convertimos el texto obtenido de la api en un objeto de js
             const menucito=JSON.parse(xhr.responseText);
             contenidoMostrar.innerHTML="";
-            //llamamos a la función que habrá de insertar el contenido a la tabla
+            //llamamos a la función que habrá de insertar el contenido
             insertarMenu(menucito);
         } else{
             contenidoMostrar.innerHTML='<p> Error al cargar el contenido </p>';
