@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento al enviar el formulario
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Evitar la recarga de la página
+        e.preventDefault(); // Evitar la recarga de la página.
 
         const nameValue = inputName.value.trim();
         const emailValue = inputEmail.value.trim();
