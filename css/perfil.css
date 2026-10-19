@@ -1,1 +1,161 @@
+.profile-page {
+    background-color: var(--color-fondo-general);
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-texto);
+}
 
+.profile-card-wrapper {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto; /* Esto garantiza que esté perfectamente centrado */
+}
+
+.booking-banner-header .section-title {
+    color: var(--color-fondo-general);
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    margin: 0;
+}
+
+.back-nav-container {
+    margin-bottom: 15px;
+}
+
+.btn-back {
+    background-color: var(--color-fondo-alt);
+    border: 1px solid var(--color-secundario);
+    color: var(--color-texto);
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+}
+
+.profile-content-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-fondo-alt);
+}
+
+.profile-avatar-circle {
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-fondo-alt);
+    color: var(--color-primario);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 0 auto 15px auto;
+    border: 2px solid var(--color-secundario);
+}
+
+.profile-username {
+    color: var(--color-primario);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.profile-badge {
+    display: inline-block;
+    background-color: var(--color-fondo-alt);
+    color: var(--color-primario);
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.profile-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primario);
+    border-bottom: 1px solid var(--color-fondo-alt);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+.profile-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.profile-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+}
+
+.info-label {
+    color: var(--color-texto-secundario);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.profile-actions-row {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-edit-profile {
+    flex: 1;
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-edit-profile:hover {
+    background-color: var(--color-primario);
+}
+
+.btn-logout {
+    flex: 1;
+    background-color: #8a2be2; /* O tono rojo de alerta */
+    background-color: #a93226;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background-color: #78281f;
+}
+
+.booking-banner-header{
+ position: relative;
+    background-color: var(--color-primario);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+}
+   
