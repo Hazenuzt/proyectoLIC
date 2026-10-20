@@ -84,7 +84,7 @@
 
 .dev-image-container {
     width: 100%;
-    height: 220px;
+    height: 280px;
     margin-bottom: var(--spacing-md);
     border-radius: 8px;
     overflow: hidden;
@@ -94,7 +94,8 @@
 .dev-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; 
+    object-position: center top;
     display: block;
 }
 
@@ -122,19 +123,19 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--spacing-lg);
     }
+    .dev-image-container {
+        height: 300px; 
+    }
 }
-
 @media (max-width: 576px) {
     .devs-section {
         padding: var(--spacing-lg) var(--spacing-md);
     }
-
     .devs-grid-container {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-
     .dev-image-container {
-        height: 240px;
+        height: 320px;
     }
 }
