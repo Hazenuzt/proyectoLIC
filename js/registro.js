@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px;">
                     <label for="reg-phone" style="width: 100%; font-weight: 500; font-size: 0.95rem;">Número de Teléfono</label>
                     <input type="tel" id="reg-phone" class="form-control" required maxlength="9" placeholder="0000-0000" style="width: 100%;">
+                    <input type="tel" id="reg-phone" class="form-control" required maxlength="9" placeholder="0000-0000" style="width: 100%;">
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px;">
@@ -238,60 +239,70 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = '../index.html';
         });
     }
-
     // 8. Boton para editar el perfil
-    let isEditing = false;
-    const editProfileBtn = document.getElementById('edit-profile-btn');
-    if (editProfileBtn) {
-        editProfileBtn.addEventListener('click', () => {
-            let loggedUser = JSON.parse(localStorage.getItem('terra_logged_in_user'));
-            if (!loggedUser) return;
+   let isEditing = false;
+const editProfileBtn = document.getElementById('edit-profile-btn');
+if (editProfileBtn) {
+    editProfileBtn.addEventListener('click', () => {
+        let loggedUser = JSON.parse(localStorage.getItem('terra_logged_in_user'));
+        if (!loggedUser) return;
 
-            const emailDisplay = document.getElementById('profile-email-display');
-            const phoneDisplay = document.getElementById('profile-phone-display');
+        const nameDisplay = document.getElementById('profile-name-display');
+        const emailDisplay = document.getElementById('profile-email-display');
+        const phoneDisplay = document.getElementById('profile-phone-display');
 
-            if (!isEditing) {
-                // --- activacion de Edicion, se ponen como textbox ---
-                emailDisplay.innerHTML = `<input type="email" id="input-edit-email" class="form-control form-control-sm" value="${loggedUser.email}">`;
-                phoneDisplay.innerHTML = `<input type="tel" id="input-edit-phone" class="form-control form-control-sm" value="${loggedUser.phone || ''}" maxlength="9" placeholder="0000-0000">`;
-                
-                editProfileBtn.textContent = 'Guardar Cambios';
-                editProfileBtn.style.backgroundColor = 'var(--color-primario)';
-                isEditing = true;
+        if (!isEditing) {
+            // --- hace textbox para editar correo, telefono y usuario
+            nameDisplay.innerHTML = `<input type="text" id="input-edit-name" class="form-control form-control-sm mb-2" value="${loggedUser.name}">`;
+            emailDisplay.innerHTML = `<input type="email" id="input-edit-email" class="form-control form-control-sm" value="${loggedUser.email}">`;
+            phoneDisplay.innerHTML = `<input type="tel" id="input-edit-phone" class="form-control form-control-sm" value="${loggedUser.phone || ''}" maxlength="9" placeholder="0000-0000">`;
+            
+            editProfileBtn.textContent = 'Guardar Cambios';
+            editProfileBtn.style.backgroundColor = 'var(--color-primario)';
+            isEditing = true;
 
-            } else {
-                // --- guardar los cambios---
-                const newEmail = document.getElementById('input-edit-email').value.trim();
-                const newPhone = document.getElementById('input-edit-phone').value.trim();
+        } else {
+            // --- guarda los cambios ---
+            const oldName = loggedUser.name; // Guardamos el nombre anterior para ubicarlo en el localstorage
+            const newName = document.getElementById('input-edit-name').value.trim();
+            const newEmail = document.getElementById('input-edit-email').value.trim();
+            const newPhone = document.getElementById('input-edit-phone').value.trim();
 
-                if (!newEmail) {
-                    alert('El correo electrónico no puede estar vacío.');
-                    return;
-                }
-
-                loggedUser.email = newEmail;
-                loggedUser.phone = newPhone;
-
-                // se actualiza la sesion en el localstorage
-                localStorage.setItem('terra_logged_in_user', JSON.stringify(loggedUser));
-
-                //se actualizan los usuarios
-                let users = JSON.parse(localStorage.getItem('terra_registered_users')) || [];
-                users = users.map(u => u.name === loggedUser.name ? loggedUser : u);
-                localStorage.setItem('terra_registered_users', JSON.stringify(users));
-
-                alert('¡Perfil actualizado con éxito!');
-                
-                isEditing = false;
-                editProfileBtn.textContent = 'Editar Perfil';
-                editProfileBtn.style.backgroundColor = ''; 
-                
-                loadProfileData();
+            if (!newName || !newEmail) {
+                alert('El nombre y el correo electrónico no pueden estar vacíos.');
+                return;
             }
-        });
-    }
 
-    // Para el numero de telefono al editar, se formatea al mismo tiempo a 0000-0000
+            // se actualizan las iniciales
+            const newInitials = getInitials(newName);
+
+            // se actualiza el suario activo
+            loggedUser.name = newName;
+            loggedUser.email = newEmail;
+            loggedUser.phone = newPhone;
+            loggedUser.initials = newInitials;
+
+            // Guarda la sesion actualizada
+            localStorage.setItem('terra_logged_in_user', JSON.stringify(loggedUser));
+
+            // Actualizar la lista general de usuarios registrados en el navegador
+            let users = JSON.parse(localStorage.getItem('terra_registered_users')) || [];
+            users = users.map(u => u.name === oldName ? loggedUser : u);
+            localStorage.setItem('terra_registered_users', JSON.stringify(users));
+
+            alert('¡Perfil y nombre de usuario actualizados con éxito!');
+            
+            isEditing = false;
+            editProfileBtn.textContent = 'Editar Perfil';
+            editProfileBtn.style.backgroundColor = ''; 
+            
+            // Recargar interfaz y perfil para reflejar los cambios en el menú y avatar
+            updateUserInterface();
+            loadProfileData();
+        }
+    });
+}
+     // Formateo para nuemro de  telefono 
     document.addEventListener('input', (e) => {
         if (e.target && e.target.id === 'input-edit-phone') {
             let value = e.target.value.replace(/\D/g, '');

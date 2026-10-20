@@ -73,9 +73,9 @@
 
 .dish-card img {
     border-radius: 8px;
-    height: clamp(130px, 15vw, 180px);
+    aspect-ratio: 4/3;
     width: 100%;
-    object-fit: cover;
+    object-fit:cover;
     margin-bottom: 12px;
 }
 
