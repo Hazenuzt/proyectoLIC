@@ -14,7 +14,7 @@
 
 <body class="booking-page">
 
-    <!-- BARRA SUPERIOR (Escritorio >= 768px) -->
+    <!-- BARRA SUPERIOR (Escritorio >= 768px y botón móvil) -->
     <header class="main-header" id="main-header">
         <div class="header-brand">
             <!-- En móviles -->
@@ -23,7 +23,7 @@
                 <img src="../img/logo.png" alt="Terra">
             </button>
 
-            <!-- En escritorio-->
+            <!-- En escritorio -->
             <a href="../index.html" class="d-none d-md-block">
                 <img src="../img/logo.png" alt="Terra">
             </a> 
@@ -33,7 +33,7 @@
                 <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
                 <li class="nav-item"><a href="menu.html" class="nav-link">Menú</a></li>
                 <li class="nav-item"><a href="galeria.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="reservas.html" class="nav-link active">Reservas y Pedidos</a></li>
+                <li class="nav-item"><a href="reservas.html" class="nav-link active">Reservas</a></li>
                 <li class="nav-item"><a href="contactos.html" class="nav-link">Contacto</a></li>
                 <li class="nav-item"><a href="desarrolladores.html" class="nav-link">Desarrolladores</a></li>
                 <li class="nav-item user-desktop-item">
@@ -46,8 +46,8 @@
         </nav>
     </header>
 
-    <!-- SIDEBAR PARA MÓVILES -->
-     <div class="offcanvas offcanvas-start sidebar-navigation" tabindex="-1" id="sidebar" aria-label="Menú de navegación">
+    <!-- SIDEBAR PARA MÓVILES (Offcanvas) -->
+    <div class="offcanvas offcanvas-start sidebar-navigation" tabindex="-1" id="sidebar" aria-label="Menú de navegación">
         <div class="offcanvas-header logo-container">
             <a href="../index.html">
                 <img src="../img/logo.png" alt="Terra">
@@ -99,13 +99,14 @@
  
             <div class="user-profile-desktop">
                 <i class="bi bi-person" aria-hidden="true"></i>
-                <span class="user-name">Usuario</span>
+                <span class="user-name" id="sidebar-username">Usuario</span>
             </div>
         </div>
     </div>
 
     <div class="booking-layout-wrapper">
-        <!-- CONTENIDO PRINCIPAL DE RESERVAS Y PEDIDOS -->
+        
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="main-content-booking" id="main-content-booking">
             
             <header class="booking-banner-header">
@@ -114,56 +115,73 @@
 
             <section class="booking-section" id="booking-section">
                 
-                <!-- BLOQUE DE BIENVENIDA DE USUARIO -->
+                <!-- BIENVENIDA -->
                 <div class="welcome-card">
-                    <h4 class="welcome-user">Usuario</h4>
-                    <p class="welcome-message">¡Hola Usuario! Qué gusto poder atenderte hoy.</p>
+                    <h4 class="welcome-user" id="welcome-user-title">Usuario</h4>
+                    <p class="welcome-message">¡Hola <span id="user-greeting-name">Usuario</span>! Qué gusto poder atenderte hoy</p>
                 </div>
 
                 <div class="booking-forms-grid">
 
-                    <!-- CARD 1: ORDENA AQUÍ -->
+                    <!-- CARD 1: ORDENA AQUÍ (Diseño en Dos Columnas) -->
                     <div class="form-card">
                         <h3 class="card-title">Ordena Aquí</h3>
-                        <form id="order-form" class="custom-form">
-                            <div class="form-row">
-                                <label for="order-dish">Platillos:</label>
-                                <div class="input-with-btn">
-                                    <select id="order-dish" class="form-control">
-                                        <option value="">-- Seleccionar --</option>
-                                    </select>
-                                    <button type="button" class="btn-add">+</button>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <label for="dish-qty">Cantidad:</label>
-                                <input type="number" id="dish-qty" class="form-control" min="1" value="1">
+                        
+                        <!-- Navbar de Categorías -->
+                        <div id="meal-categories-nav" class="meal-categories-container" style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-start; max-height: 95px; overflow-y: auto; margin-bottom: 20px; padding: 5px; background: #fafafa; border-radius: 6px; border: 1px solid #eee;">
+                            <!-- Se inyectará dinámicamente con JS -->
+                        </div>
+
+                        <div class="custom-form">
+                            <!-- Selector de Platillo -->
+                            <div class="form-row" style="margin-bottom: 15px;">
+                                <label for="order-dish">Platillos del Menú:</label>
+                                <select id="order-dish" class="form-control">
+                                    <option value="">-- Selecciona categoría primero --</option>
+                                </select>
                             </div>
 
-                            <div class="form-row">
-                                <label for="order-drink">Bebidas:</label>
-                                <div class="input-with-btn">
-                                    <select id="order-drink" class="form-control">
-                                        <option value="">-- Seleccionar --</option>
-                                    </select>
-                                    <button type="button" class="btn-add">+</button>
+                            <!-- CONTENEDOR DIVIDIDO EN DOS COLUMNAS -->
+                            <div style="display: flex; gap: 20px; align-items: center; background: #fdfdfd; padding: 15px; border-radius: 8px; border: 1px dashed #ddd; margin-bottom: 15px;">
+                                
+                                <!-- COLUMNA IZQUIERDA: Imagen Grande del Platillo -->
+                                <div style="flex: 0 0 130px; text-align: center;">
+                                    <div id="dish-preview-container" style="display: none;">
+                                        <img id="dish-preview-img" src="" alt="Platillo" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                                    </div>
+                                    <div id="dish-placeholder" style="width: 120px; height: 120px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 11px; text-align: center; padding: 5px;">
+                                        Selecciona un plato
+                                    </div>
+                                </div>
+
+                                <!-- COLUMNA DERECHA: Controles alineados -->
+                                <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+                                    <div>
+                                        <label for="dish-qty" style="font-size: 13px; margin-bottom: 4px; display: block;">Cantidad:</label>
+                                        <input type="number" id="dish-qty" class="form-control" min="1" value="1">
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-success w-100" id="btn-add-to-cart" style="padding: 9px; font-weight: bold;">
+                                            <i class="bi bi-plus-lg" aria-hidden="true"></i> Agregar Plato
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <label for="drink-qty">Cantidad:</label>
-                                <input type="number" id="drink-qty" class="form-control" min="1" value="1">
-                            </div>
 
-                            <div class="form-action">
-                                <button type="submit" class="btn-custom">Confirmar Orden</button>
+                            <!-- Lista / Carrito temporal de platillos agregados -->
+                            <div class="form-row">
+                                <label>Platillos en tu Orden:</label>
+                                <div id="cart-items-container" style="max-height: 120px; overflow-y: auto; border: 1px solid #ddd; border-radius: 5px; padding: 5px; background: #fff;">
+                                    <p class="text-muted" style="text-align: center; margin: 10px 0; font-size: 12px;">Ningún platillo agregado todavía.</p>
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
-                    <!-- CARD 2: RESERVA TU MESA -->
+                    <!-- CARD 2: RESERVA TU MESA (Estilo Cine) -->
                     <div class="form-card">
                         <h3 class="card-title">Reserva tu Mesa</h3>
-                        <form id="reservation-form" class="custom-form">
+                        <div class="custom-form">
                             <div class="form-row">
                                 <label for="res-date">Fecha:</label>
                                 <input type="date" id="res-date" class="form-control" required>
@@ -175,12 +193,7 @@
                             </div>
 
                             <div class="form-row">
-                                <label for="res-guests">Nº de personas:</label>
-                                <input type="number" id="res-guests" class="form-control" min="1" max="15" required>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="res-zone">Sección / Zona:</label>
+                                <label for="res-zone">Sección/Zona de mesa:</label>
                                 <select id="res-zone" class="form-control" required>
                                     <option value="">-- Seleccionar Zona --</option>
                                     <option value="interior">Interior</option>
@@ -189,43 +202,32 @@
                                 </select>
                             </div>
 
-                            <div class="form-action">
-                                <button type="submit" class="btn-custom">Confirmar Reserva</button>
+                            <!-- CONTENEDOR DE LA CUADRÍCULA DE MESAS (Estilo Cine) -->
+                            <div class="form-row">
+                                <label>Selecciona tu Mesa:</label>
+                                <div id="table-grid-container" class="table-grid-cine" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; padding: 10px; background: #f9f9f9; border-radius: 5px;">
+                                    <p class="text-muted" style="grid-column: span 4; text-align: center;">Selecciona una zona y fecha para ver las mesas</p>
+                                </div>
+                                <input type="hidden" id="selected-table-input" required>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                 </div>
 
-                <!-- SECCIÓN RESUMEN DE LA ORDEN -->
+                <!-- SECCIÓN RESUMEN Y BOTÓN UNIFICADO -->
                 <div class="order-summary-block">
-                    <h3 class="summary-title">Resumen de la Orden</h3>
-                    
-                    <div class="summary-table-wrapper">
-                        <table class="summary-table">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
-                                </tr>
-                            </thead>
-                            <tbody id="summary-items">
-                                <tr>
-                                    <td>Lorem</td>
-                                    <td>2</td>
-                                    <td>$00.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="summary-footer" style="text-align: center; margin-top: 20px;">
+                        <button type="button" class="btn-custom btn-pay" id="btn-confirm-all" style="padding: 12px 30px; font-size: 16px;">Finalizar y Guardar Pedido y Reserva</button>
                     </div>
+                </div>
 
-                    <div class="summary-footer">
-                        <div class="total-box">
-                            <span>Total:</span>
-                            <span class="total-amount">$00.00</span>
-                        </div>
-                        <button type="button" class="btn-custom btn-pay">Pagar</button>
+                <!-- SECCIÓN DE RESERVAS ACTIVAS DEL USUARIO -->
+                <div class="user-reservations-block" style="margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <h3 class="summary-title" style="margin-bottom: 15px;">Mis Reservas Activas</h3>
+                    <div id="user-active-reservations-list">
+                        <!-- Se inyectarán dinámicamente con JS -->
+                        <p class="text-muted">No tienes reservas activas por el momento.</p>
                     </div>
                 </div>
 
@@ -240,7 +242,11 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<<<<<<< HEAD
+    <script src="../js/js_reservas.js"></script>
+=======
     <script src="../js/reservas.js"></script>
     <script src="../js/registro.js"></script>
+>>>>>>> origin/main
 </body>
 </html>
