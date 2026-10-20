@@ -86,6 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(div);
 });
 
+//Para obtener la ruta de donde proviene el inicio de sesion
+function obtenerRutaPerfil() {
+    const rutaActual = window.location.pathname;
+
+    if (rutaActual.endsWith("/index.html") ||
+        rutaActual.endsWith("/")) {
+        return "html/perfil.html";
+    }
+
+    return "perfil.html";
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Actualizar los menus  y la vista al perfil de usuario
@@ -102,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (loggedUser) {
             // Si ya esta Ingresado ir al perfil
-            window.location.href = 'perfil.html';
+            window.location.href = obtenerRutaPerfil();
         } else {
             // Si aun no ingresa que se registre
             const loginModalEl = document.getElementById('loginModal');
@@ -179,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modalInstance) modalInstance.hide();
 
             updateUserInterface();
-            window.location.href = 'perfil.html';
+           window.location.href = obtenerRutaPerfil();
         });
     }
 
@@ -208,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (modalInstance) modalInstance.hide();
 
                 updateUserInterface();
-                window.location.href = 'perfil.html';
+              window.location.href = obtenerRutaPerfil();
             } else {
                 alert('Correo o contraseña incorrectos, o la cuenta no existe.');
             }
@@ -381,7 +393,7 @@ function updateUserInterface() {
         //menu lateral
         if (sidebarUserContainer) {
             sidebarUserContainer.innerHTML = `
-                <div class="d-flex align-items-center gap-2" style="cursor: pointer;" onclick="window.location.href='perfil.html'">
+                <div class="d-flex align-items-center gap-2" style="cursor: pointer;" onclick="window.location.href='${obtenerRutaPerfil()}'"">
                     <div class="rounded-circle bg-white text-dark d-flex align-items-center justify-content-center fw-bold shadow-sm" style="width: 40px; height: 40px; border: 1px solid var(--color-secundario); color: var(--color-primario);">
                         ${initials}
                     </div>
@@ -396,7 +408,7 @@ function updateUserInterface() {
         // menu para compu
         if (desktopUserBtn) {
             desktopUserBtn.innerHTML = `
-                <div class="d-inline-flex align-items-center gap-2" style="cursor: pointer;" onclick="window.location.href='perfil.html'">
+                <div class="d-inline-flex align-items-center gap-2" style="cursor: pointer;" onclick="window.location.href='${obtenerRutaPerfil()}'"">
                     <span class="rounded-circle bg-white text-dark d-inline-flex align-items-center justify-content-center fw-bold shadow-sm" style="width: 32px; height: 32px; font-size: 0.85rem; border: 1px solid var(--color-secundario); color: var(--color-primario);">${initials}</span>
                     <span>${loggedUser.name}</span>
                 </div>
