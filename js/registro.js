@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px;">
                     <label for="reg-phone" style="width: 100%; font-weight: 500; font-size: 0.95rem;">Número de Teléfono</label>
                     <input type="tel" id="reg-phone" class="form-control" required maxlength="9" placeholder="0000-0000" style="width: 100%;">
-                    <input type="tel" id="reg-phone" class="form-control" required maxlength="9" placeholder="0000-0000" style="width: 100%;">
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px;">
